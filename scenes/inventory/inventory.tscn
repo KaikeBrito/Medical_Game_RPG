@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://djsnrfqvprhun"]
+
+[ext_resource type="Texture2D" uid="uid://ck8icxmgkqgr6" path="res://sprites/Inventory/InventoryBackgroud.png" id="1_k5gp2"]
+[ext_resource type="PackedScene" uid="uid://dpsh1uqd3ddgq" path="res://scenes/inventory/slot.tscn" id="2_yxepq"]
+[ext_resource type="Texture2D" uid="uid://yeafvrf4xyv0" path="res://sprites/Itens/Escudo 2.png" id="3_yxepq"]
+
+[sub_resource type="GDScript" id="GDScript_yxepq"]
+script/source = "extends TextureRect
+"
+
+[node name="Inventory" type="TextureRect"]
+texture_filter = 1
+offset_right = 350.0
+offset_bottom = 350.0
+texture = ExtResource("1_k5gp2")
+script = SubResource("GDScript_yxepq")
+
+[node name="container" type="GridContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 59.0
+offset_top = 54.0
+offset_right = 293.0
+offset_bottom = 306.0
+theme_override_constants/h_separation = 78
+theme_override_constants/v_separation = 78
+columns = 4
+
+[node name="Slot" parent="container" instance=ExtResource("2_yxepq")]
+layout_mode = 2
+
+[node name="sprite" parent="container/Slot" index="1"]
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 16.0
+
+[node name="Slot2" parent="container" instance=ExtResource("2_yxepq")]
+layout_mode = 2
+
+[node name="sprite" parent="container/Slot2" index="1"]
+offset_left = -18.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 18.0
+
+[node name="Slot3" parent="container" instance=ExtResource("2_yxepq")]
+layout_mode = 2
+
+[node name="sprite" parent="container/Slot3" index="1"]
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 18.0
+offset_bottom = 18.0
+
+[node name="Slot4" parent="container" instance=ExtResource("2_yxepq")]
+layout_mode = 2
+
+[node name="sprite" parent="container/Slot4" index="1"]
+offset_left = -17.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 17.0
+texture = ExtResource("3_yxepq")
+
+[node name="Slot5" parent="container" instance=ExtResource("2_yxepq")]
+layout_mode = 2
+
+[node name="sprite" parent="container/Slot5" index="1"]
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 16.0
+
+[node name="Slot6" parent="container" instance=ExtResource("2_yxepq")]
+layout_mode = 2
+
+[node name="sprite" parent="container/Slot6" index="1"]
+offset_left = -19.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+
+[editable path="container/Slot"]
+[editable path="container/Slot2"]
+[editable path="container/Slot3"]
+[editable path="container/Slot4"]
+[editable path="container/Slot5"]
+[editable path="container/Slot6"]

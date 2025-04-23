@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpsh1uqd3ddgq"]
+
+[ext_resource type="Script" uid="uid://d37vuny325y06" path="res://scripts/slot.gd" id="1_12ej0"]
+[ext_resource type="Texture2D" uid="uid://csdttum13nsov" path="res://sprites/Inventory/SlotM.png" id="2_12ej0"]
+
+[node name="Slot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1127.0
+offset_bottom = -623.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12ej0")
+
+[node name="background" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_right = 1.683
+anchor_bottom = 1.667
+offset_left = -0.0200001
+offset_right = 0.0199966
+offset_bottom = -0.0200043
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_12ej0")
+
+[node name="sprite" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.333
+anchor_right = 1.483
+anchor_bottom = 1.367
+offset_left = -5.25
+offset_top = -6.325
+offset_right = 6.925
+offset_bottom = 6.825
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="amount" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.12
+anchor_right = 1.944
+anchor_bottom = 2.04
+offset_right = -0.00500107
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2

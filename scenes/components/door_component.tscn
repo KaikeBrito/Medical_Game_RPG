@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://bduaadanx7vuh"]
+
+[ext_resource type="Texture2D" uid="uid://6efny7giicht" path="res://mystic_woods_free_2.2/sprites/tilesets/walls/wooden_door_b.png" id="1_3em74"]
+[ext_resource type="Script" uid="uid://cjuafuwmp566m" path="res://scripts/door_component.gd" id="1_ccgtl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4jf2"]
+size = Vector2(17, 7.75)
+
+[sub_resource type="Animation" id="Animation_syqr1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ue6tn"]
+resource_name = "close"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ccgtl"]
+resource_name = "open"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ue6tn"]
+_data = {
+&"RESET": SubResource("Animation_syqr1"),
+&"close": SubResource("Animation_ue6tn"),
+&"open": SubResource("Animation_ccgtl")
+}
+
+[node name="DoorComponent" type="Area2D" node_paths=PackedStringArray("_animation")]
+z_index = 2
+script = ExtResource("1_ccgtl")
+_teleport_position = Vector2(1176, 844)
+_animation = NodePath("Animation")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_3em74")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_y4jf2")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ue6tn")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]
