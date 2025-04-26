@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bduaadanx7vuh"]
 
 [ext_resource type="Texture2D" uid="uid://6efny7giicht" path="res://mystic_woods_free_2.2/sprites/tilesets/walls/wooden_door_b.png" id="1_3em74"]
-[ext_resource type="Script" uid="uid://cjuafuwmp566m" path="res://scripts/door_component.gd" id="1_ccgtl"]
+[ext_resource type="Script" uid="uid://cjuafuwmp566m" path="res://scripts/world/door_component.gd" id="1_ccgtl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4jf2"]
 size = Vector2(17, 7.75)

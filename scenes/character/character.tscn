@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dytfsax6uv1rp"]
 
-[ext_resource type="Script" uid="uid://0re2uhxtsjdh" path="res://scripts/character.gd" id="1_ushfy"]
+[ext_resource type="Script" uid="uid://0re2uhxtsjdh" path="res://scripts/world/character.gd" id="1_ushfy"]
 [ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="2_ushfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3wjb"]
@@ -462,9 +462,8 @@ states/idle/position = Vector2(346.667, 86.7407)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_7iw6i")
 states/walk/position = Vector2(505.333, 87.284)
 
-[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree")]
+[node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_ushfy")
-_animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1

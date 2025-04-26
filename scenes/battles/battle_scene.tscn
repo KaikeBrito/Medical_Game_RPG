@@ -1,0 +1,318 @@
+[gd_scene load_steps=25 format=3 uid="uid://h4utufpnv5u0"]
+
+[ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_3ki0w"]
+[ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="1_g0lu4"]
+[ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="2_3ki0w"]
+[ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="2_gvb6n"]
+[ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="4_fid7t"]
+
+[sub_resource type="Animation" id="Animation_vjuxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_3obht"]
+resource_name = "attack"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 44, 45]
+}
+
+[sub_resource type="Animation" id="Animation_mkkp0"]
+resource_name = "die"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57]
+}
+
+[sub_resource type="Animation" id="Animation_gvb6n"]
+resource_name = "idle_right"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3obht"]
+_data = {
+&"RESET": SubResource("Animation_vjuxw"),
+&"attack": SubResource("Animation_3obht"),
+&"die": SubResource("Animation_mkkp0"),
+&"idle_right": SubResource("Animation_gvb6n")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvb6n"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvb6n"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjuxw"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ak1xe"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ji6nl"]
+states/attack/node = SubResource("AnimationNodeAnimation_gvb6n")
+states/attack/position = Vector2(517.333, 101.111)
+states/die/node = SubResource("AnimationNodeAnimation_vjuxw")
+states/die/position = Vector2(680, 100.667)
+states/idle_right/node = SubResource("AnimationNodeAnimation_ak1xe")
+states/idle_right/position = Vector2(330.667, 100.667)
+
+[sub_resource type="Animation" id="Animation_rsd5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fid7t"]
+resource_name = "die"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 85, 86, 87, 88]
+}
+
+[sub_resource type="Animation" id="Animation_3ki0w"]
+resource_name = "idle_left"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_yccpy"]
+resource_name = "attack"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 49, 50, 51, 52, 53, 54, 55]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yccpy"]
+_data = {
+&"RESET": SubResource("Animation_rsd5w"),
+&"attack": SubResource("Animation_yccpy"),
+&"die": SubResource("Animation_fid7t"),
+&"idle_left": SubResource("Animation_3ki0w")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ji6nl"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yccpy"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mkkp0"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vjuxw"]
+states/attack/node = SubResource("AnimationNodeAnimation_ji6nl")
+states/attack/position = Vector2(384.724, 83.3333)
+states/die/node = SubResource("AnimationNodeAnimation_yccpy")
+states/die/position = Vector2(596.725, 101.555)
+states/idle_left/node = SubResource("AnimationNodeAnimation_mkkp0")
+states/idle_left/position = Vector2(307.391, 88.6667)
+graph_offset = Vector2(-212.609, 0)
+
+[node name="BattleScene" type="Node2D"]
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("1_3ki0w")
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="Characters"]
+position = Vector2(176, 144)
+script = ExtResource("2_3ki0w")
+
+[node name="Sprite" type="Sprite2D" parent="Characters/Player"]
+texture_filter = 1
+position = Vector2(0, -8)
+texture = ExtResource("1_g0lu4")
+hframes = 6
+vframes = 10
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_3obht")
+}
+
+[node name="ProgressBarPlayer" type="ProgressBar" parent="Characters/Player"]
+offset_left = -40.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 43.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapePlayer" type="CollisionShape2D" parent="Characters/Player"]
+shape = SubResource("RectangleShape2D_gvb6n")
+
+[node name="AnimationTree" type="AnimationTree" parent="Characters/Player"]
+tree_root = SubResource("AnimationNodeStateMachine_ji6nl")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Enemy" type="CharacterBody2D" parent="Characters"]
+position = Vector2(344, 144)
+script = ExtResource("4_fid7t")
+
+[node name="Texture" type="Sprite2D" parent="Characters/Enemy"]
+texture_filter = 1
+position = Vector2(0, 1)
+texture = ExtResource("2_gvb6n")
+flip_h = true
+hframes = 7
+vframes = 13
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/Enemy"]
+libraries = {
+&"": SubResource("AnimationLibrary_yccpy")
+}
+
+[node name="ProgressBarEnemy" type="ProgressBar" parent="Characters/Enemy"]
+offset_left = -40.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 43.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="Characters/Enemy"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gvb6n")
+
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="Characters/Enemy"]
+tree_root = SubResource("AnimationNodeStateMachine_vjuxw")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 136.0
+offset_top = 216.0
+offset_right = 392.0
+offset_bottom = 272.0
+
+[node name="DefeatLabel" type="Label" parent="CanvasLayer/Panel"]
+offset_left = 72.0
+offset_top = -48.0
+offset_right = 175.0
+offset_bottom = -25.0
+text = "Você Perdeu!"
+
+[node name="VictoryLabel" type="Label" parent="CanvasLayer/Panel"]
+offset_left = 72.0
+offset_top = -48.0
+offset_right = 175.0
+offset_bottom = -25.0
+text = "Você Venceu!"
+
+[node name="Attack" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 66.0
+offset_bottom = 48.0
+text = "Attack"
+
+[node name="Defense" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 158.0
+offset_bottom = 48.0
+text = "Defese"
+
+[node name="Skip" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 8.0
+offset_right = 248.0
+offset_bottom = 48.0
+text = "Skip"

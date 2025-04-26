@@ -10,7 +10,7 @@ var _state_machine  # Referência para a máquina de estados da animação
 
 # 🔹 Categoria de objetos exportáveis no editor
 @export_category("Objects")
-@export var _animation_tree: AnimationTree = null  # Referência à árvore de animação usada para controlar as animações do personagem
+@onready var _animation_tree: AnimationTree = get_node("AnimationTree")
 
 func _ready() -> void:
 	# Obtém a máquina de estados da animação a partir do AnimationTree
