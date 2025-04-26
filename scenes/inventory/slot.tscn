@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpsh1uqd3ddgq"]
 
-[ext_resource type="Script" uid="uid://d37vuny325y06" path="res://scripts/slot.gd" id="1_12ej0"]
+[ext_resource type="Script" uid="uid://d37vuny325y06" path="res://scripts/world/inventory/slot.gd" id="1_12ej0"]
 [ext_resource type="Texture2D" uid="uid://csdttum13nsov" path="res://sprites/Inventory/SlotM.png" id="2_12ej0"]
 
 [node name="Slot" type="Control"]
