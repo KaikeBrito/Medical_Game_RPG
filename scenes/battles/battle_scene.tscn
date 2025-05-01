@@ -117,6 +117,23 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_yccpy"]
+resource_name = "attack"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 49, 50, 51, 52, 53, 54, 55]
+}
+
 [sub_resource type="Animation" id="Animation_fid7t"]
 resource_name = "die"
 length = 0.6
@@ -151,23 +168,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [7, 8, 9, 10]
-}
-
-[sub_resource type="Animation" id="Animation_yccpy"]
-resource_name = "attack"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [28, 29, 30, 31, 32, 33, 49, 50, 51, 52, 53, 54, 55]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yccpy"]
@@ -280,6 +280,7 @@ offset_right = 392.0
 offset_bottom = 272.0
 
 [node name="DefeatLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = -48.0
 offset_right = 175.0
@@ -287,6 +288,7 @@ offset_bottom = -25.0
 text = "Você Perdeu!"
 
 [node name="VictoryLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = -48.0
 offset_right = 175.0
