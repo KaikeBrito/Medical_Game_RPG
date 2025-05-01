@@ -117,9 +117,5 @@ position = Vector2(0, -2)
 texture = ExtResource("5_7pb6i")
 
 [node name="Slime" parent="." instance=ExtResource("8_icy5c")]
-texture_filter = 1
-position = Vector2(160, 136)
 
 [connection signal="body_entered" from="Item1" to="Item1" method="_on_body_entered"]
-
-[editable path="Slime"]
