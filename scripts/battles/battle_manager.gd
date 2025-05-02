@@ -10,6 +10,9 @@ extends Node   # este script está no nó BattleManager, filho de BattleScene
 @onready var enemy_bar        = enemy.get_node("ProgressBarEnemy")  as ProgressBar
 @onready var victory_label    = $"../CanvasLayer/Panel/VictoryLabel" as Label
 @onready var defeat_label     = $"../CanvasLayer/Panel/DefeatLabel"  as Label
+@onready var xp_bar = $"../CanvasLayer/Panel/XPBar" as ProgressBar
+@onready var xp_label = $"../CanvasLayer/Panel/XPLabel" as Label
+
 
 var player_turn      = true
 var player_defending = false
@@ -75,12 +78,30 @@ func _update_ui():
 	attack_button.disabled  = not player_turn
 	defense_button.disabled = not player_turn
 	skip_button.disabled    = not player_turn
+	
+func _update_xp_bar():
+	var current = float(player.xp_system.current_xp)  # converte para float
+	var total = float(player.xp_system.xp_to_next_level)  # converte para float
+	var level = player.xp_system.level
+
+	# Atualiza valor e máximo da barra
+	xp_bar.max_value = total
+	xp_bar.value = lerp(xp_bar.value, current, 0.25)  # animação suave
+
+	# Atualiza o texto do XPText Label
+	xp_label.text = "Nível %d - %d / %d XP" % [level, current, total]
+
+	
 
 func _on_victory():
+	print("Vitória confirmada!")
+	player.xp_system.gain_xp(50)
+	_update_xp_bar()
 	victory_label.visible  = true
 	attack_button.disabled  = true
 	defense_button.disabled = true
 	skip_button.disabled    = true
+	
 	await get_tree().create_timer(2.0).timeout
 	# usa change_scene_to_file em Godot 4
 	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")

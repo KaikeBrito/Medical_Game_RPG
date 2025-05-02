@@ -32,6 +32,8 @@ var patrol_dir: Vector2 = Vector2.ZERO
 # 🔹 Jogador (pode não existir; aí só patrulha)
 var player: Node2D = null
 
+var health := 50  # Vida inicial do slime
+
 func _ready() -> void:
 	state_machine = animation_tree["parameters/playback"]
 	var plist = get_tree().get_nodes_in_group("Player")
@@ -110,3 +112,15 @@ func _animate() -> void:
 				state_machine.travel("attack")
 			else:
 				state_machine.travel("idle")
+				
+# Função para aplicar dano ao slime
+func take_damage(amount: int):
+	health -= amount  
+	if health <= 0:
+		die()  
+				
+func die():
+	if player and player.has_method("gain_xp"):
+		player.gain_xp(30)
+		
+	queue_free()

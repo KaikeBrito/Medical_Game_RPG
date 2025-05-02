@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://h4utufpnv5u0"]
+[gd_scene load_steps=27 format=3 uid="uid://h4utufpnv5u0"]
 
 [ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_3ki0w"]
 [ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="1_g0lu4"]
@@ -102,8 +102,6 @@ states/die/position = Vector2(680, 100.667)
 states/idle_right/node = SubResource("AnimationNodeAnimation_ak1xe")
 states/idle_right/position = Vector2(330.667, 100.667)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ki0w"]
-
 [sub_resource type="Animation" id="Animation_rsd5w"]
 length = 0.001
 tracks/0/type = "value"
@@ -199,7 +197,7 @@ states/idle_left/position = Vector2(307.391, 88.6667)
 graph_offset = Vector2(-212.609, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ki0w"]
-bg_color = Color(0.172549, 0.796078, 0.313726, 1)
+bg_color = Color(0.172549, 0.243137, 0.313726, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -249,11 +247,6 @@ shape = SubResource("RectangleShape2D_gvb6n")
 [node name="AnimationTree" type="AnimationTree" parent="Characters/Player"]
 tree_root = SubResource("AnimationNodeStateMachine_ji6nl")
 anim_player = NodePath("../AnimationPlayer")
-
-[node name="Area2D" type="Area2D" parent="Characters/Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Player/Area2D"]
-shape = SubResource("CapsuleShape2D_3ki0w")
 
 [node name="Enemy" type="CharacterBody2D" parent="Characters"]
 position = Vector2(344, 144)
@@ -341,25 +334,21 @@ offset_bottom = 48.0
 text = "Skip"
 
 [node name="XPLabel" type="Label" parent="CanvasLayer/Panel"]
-offset_left = 47.0
-offset_top = -170.0
-offset_right = 201.0
-offset_bottom = -121.0
+offset_left = -136.0
+offset_top = -216.0
+offset_right = 18.0
+offset_bottom = -167.0
 text = "XP: 0 / 100 | Nível: 1
 "
 
 [node name="XPBar" type="ProgressBar" parent="CanvasLayer/Panel"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = -146.0
-offset_right = 73.0
-offset_bottom = -119.0
+offset_right = 4.0
+offset_bottom = 27.0
 theme_override_styles/background = SubResource("StyleBoxFlat_3ki0w")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fid7t")
 
 [node name="XPText" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = -145.0
-offset_right = 90.0
-offset_bottom = -122.0
+offset_right = 40.0
+offset_bottom = 23.0

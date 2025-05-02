@@ -18,7 +18,7 @@ func attack(target, target_defending := false):
 	await get_tree().create_timer(0.5).timeout
 	var dmg = 15
 	if target_defending:
-		dmg = int(dmg / 2)
+		dmg = int(floor(dmg / 2.0))
 	target.take_damage(dmg)
 	state_machine.travel("idle_left")
 
