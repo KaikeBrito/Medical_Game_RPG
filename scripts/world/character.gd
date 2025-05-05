@@ -10,8 +10,7 @@ class_name Character
 
 # 🔹 Referência ao CanvasLayer (se precisar manipular HUD/UI)
 @export_category("References")
-@export var canvas_layer_path: NodePath     # Arraste aqui seu nó CanvasLayer
-@onready var canvas_layer: CanvasLayer = get_tree().get_current_scene().get_node("CanvasLayer")
+@export var canvas_layer: CanvasLayer   # Arraste o CanvasLayer aqui
 
 # 🔹 Objetos exportáveis
 @export_category("Objects")
