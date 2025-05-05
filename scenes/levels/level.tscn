@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://dnstwjij6ymes"]
+[gd_scene load_steps=14 format=4 uid="uid://dnstwjij6ymes"]
 
 [ext_resource type="PackedScene" uid="uid://dnhf6anjw7764" path="res://scenes/terrains/terrain.tscn" id="1_mbbpy"]
-[ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="3_icy5c"]
 [ext_resource type="Texture2D" uid="uid://cwrkhg5wtcd3u" path="res://mystic_woods_free_2.2/sprites/objects/objects.png" id="3_mbbpy"]
 [ext_resource type="Script" uid="uid://bkh2f3roqhv7g" path="res://scripts/world/inventory/item.gd" id="4_rmjfq"]
 [ext_resource type="Texture2D" uid="uid://b4nbgg8vs2kdq" path="res://sprites/Itens/Espada 1.png" id="5_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://dytfsax6uv1rp" path="res://scenes/character/character.tscn" id="6_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://cgxqxsxuckxcm" path="res://scenes/character/slime.tscn" id="8_icy5c"]
 [ext_resource type="PackedScene" uid="uid://bduaadanx7vuh" path="res://scenes/components/door_component.tscn" id="8_ouxo3"]
+[ext_resource type="Script" uid="uid://b5j0jm3sxtnom" path="res://scripts/world/portal.gd" id="9_icy5c"]
+[ext_resource type="PackedScene" uid="uid://dq3dojceenpwd" path="res://scenes/levels/level_village.tscn" id="10_rmjfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbbpy"]
 resource_name = "objects"
@@ -43,25 +44,10 @@ texture = ExtResource("3_mbbpy")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mbbpy")
 
-[sub_resource type="GDScript" id="GDScript_754fn"]
-script/source = "extends CanvasLayer
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed(\"ui_cancel\"):
-		$Inventory.visible = not $Inventory.visible
-		
-		
-func  add_item_inventory(sprite: Texture) -> bool:
-	for slot in $Inventory/container.get_children():
-		if slot.get_node(\"sprite\").texture == null:
-			slot.get_node(\"sprite\").texture = sprite
-			slot.get_node(\"amount\").text = \"1\"
-			return true
-			
-	return false
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0f350"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouxo3"]
+size = Vector2(37, 21)
 
 [node name="Level" type="Node2D"]
 
@@ -76,15 +62,15 @@ _teleport_position = Vector2(1152, 745)
 
 [node name="DoorComponent2" parent="Components" instance=ExtResource("8_ouxo3")]
 z_index = 1
-position = Vector2(1152, 720)
+position = Vector2(1152, 712)
 _teleport_position = Vector2(152, 275)
 
 [node name="YSort" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(0, -8)
 
 [node name="Character" parent="YSort" instance=ExtResource("6_xfk5q")]
-texture_filter = 1
 position = Vector2(304, 184)
 
 [node name="objects" type="TileMapLayer" parent="YSort"]
@@ -94,15 +80,11 @@ position = Vector2(16, 0)
 tile_map_data = PackedByteArray("AAAGAAcAAAAAAAUAAAAPAAwAAAAAAAUAAAAUAAEAAAAKAAcAAABCAC0AAAALAAIAAABJADMAAAAFAAAAAABGADEAAAAKAAAAAAALAA8AAAAIAAYAAAALAAsAAAAIAAYAAAADAA8AAAAAAAAAAAAXAA8AAAAAAAUAAAAXAAkAAAAAAAUAAAA=")
 tile_set = SubResource("TileSet_icy5c")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = SubResource("GDScript_754fn")
+[node name="Slime" parent="YSort" groups=["Enemy"] instance=ExtResource("8_icy5c")]
+position = Vector2(80, 136)
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("3_icy5c")]
-visible = false
-offset_left = 112.0
-offset_top = 28.0
-offset_right = 462.0
-offset_bottom = 378.0
+[node name="CollisionShape2D" parent="YSort/Slime/DetectetionArea" index="0"]
+position = Vector2(0, 16)
 
 [node name="Item1" type="Area2D" parent="."]
 position = Vector2(59, 22)
@@ -116,10 +98,14 @@ shape = SubResource("RectangleShape2D_0f350")
 position = Vector2(0, -2)
 texture = ExtResource("5_7pb6i")
 
-[node name="Slime" parent="." instance=ExtResource("8_icy5c")]
-texture_filter = 1
-position = Vector2(160, 136)
+[node name="Portal" type="Area2D" parent="." groups=["character"]]
+script = ExtResource("9_icy5c")
+target_scene = ExtResource("10_rmjfq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(312, 232)
+shape = SubResource("RectangleShape2D_ouxo3")
 
 [connection signal="body_entered" from="Item1" to="Item1" method="_on_body_entered"]
 
-[editable path="Slime"]
+[editable path="YSort/Slime"]

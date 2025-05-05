@@ -107,11 +107,6 @@ func _animate() -> void:
 				state_machine.travel("walk")
 			else:
 				state_machine.travel("idle")
-		STATE_ATTACK:
-			if animation_tree.has("parameters/attack"):
-				state_machine.travel("attack")
-			else:
-				state_machine.travel("idle")
 				
 # Função para aplicar dano ao slime
 func take_damage(amount: int):

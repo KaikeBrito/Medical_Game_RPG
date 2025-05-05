@@ -32,7 +32,6 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Character" parent="YSort" instance=ExtResource("2_nolxt")]
-texture_filter = 1
 position = Vector2(1152, 720)
 
 [node name="Tree" parent="YSort" instance=ExtResource("3_nolxt")]
