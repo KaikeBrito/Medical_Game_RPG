@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://dytfsax6uv1rp"]
+[gd_scene load_steps=37 format=3 uid="uid://dytfsax6uv1rp"]
 
 [ext_resource type="Script" uid="uid://0re2uhxtsjdh" path="res://scripts/world/character.gd" id="1_ushfy"]
 [ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="2_ushfy"]
-[ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="3_mutn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3wjb"]
 size = Vector2(12.5, 14)
@@ -861,29 +860,12 @@ states/walk/position = Vector2(346.914, 120.617)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuyo6"]
 
-[sub_resource type="GDScript" id="GDScript_fgi2k"]
-script/source = "extends CanvasLayer
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed(\"ui_cancel\"):
-		$Inventory.visible = not $Inventory.visible
-		
-		
-func  add_item_inventory(sprite: Texture) -> bool:
-	for slot in $Inventory/container.get_children():
-		if slot.get_node(\"sprite\").texture == null:
-			slot.get_node(\"sprite\").texture = sprite
-			slot.get_node(\"amount\").text = \"1\"
-			return true
-			
-	return false
-"
-
-[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "attack_timer") groups=["Player"]]
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "attack_timer", "attack_area") groups=["Player"]]
 texture_filter = 1
 script = ExtResource("1_ushfy")
 animation_tree = NodePath("AnimationTree")
 attack_timer = NodePath("AttackTImer")
+attack_area = NodePath("AttackArea")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -915,21 +897,13 @@ wait_time = 0.4
 one_shot = true
 
 [node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="AttackArea"]
 texture_filter = 1
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_cuyo6")
 disabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = SubResource("GDScript_fgi2k")
-
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("3_mutn8")]
-visible = false
-offset_left = 112.0
-offset_top = 28.0
-offset_right = 462.0
-offset_bottom = 378.0
 
 [connection signal="timeout" from="AttackTImer" to="." method="_on_attack_t_imer_timeout"]

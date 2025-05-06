@@ -94,17 +94,16 @@ func _update_xp_bar():
 	
 
 func _on_victory():
-	print("Vitória confirmada!")
+	# concede XP
 	player.xp_system.gain_xp(50)
+	# anima a barra
 	_update_xp_bar()
-	victory_label.visible  = true
-	attack_button.disabled  = true
-	defense_button.disabled = true
-	skip_button.disabled    = true
-	
+	victory_label.visible = true
+	# … desabilita botões …
 	await get_tree().create_timer(2.0).timeout
-	# usa change_scene_to_file em Godot 4
+	# volta para a cena de mapa
 	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+
 
 func _on_defeat():
 	defeat_label.visible   = true

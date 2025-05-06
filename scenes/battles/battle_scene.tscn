@@ -213,6 +213,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="BattleScene" type="Node2D"]
+position = Vector2(320, 152)
 
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("1_3ki0w")
@@ -290,15 +291,19 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 320.0
+offset_top = 152.0
+offset_right = 360.0
+offset_bottom = 192.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 136.0
-offset_top = 216.0
-offset_right = 392.0
-offset_bottom = 272.0
+offset_left = 456.0
+offset_top = 368.0
+offset_right = 712.0
+offset_bottom = 424.0
+metadata/_edit_use_anchors_ = true
 
 [node name="DefeatLabel" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -307,6 +312,7 @@ offset_top = -48.0
 offset_right = 175.0
 offset_bottom = -25.0
 text = "Você Perdeu!"
+metadata/_edit_use_anchors_ = true
 
 [node name="VictoryLabel" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -315,6 +321,7 @@ offset_top = -48.0
 offset_right = 175.0
 offset_bottom = -25.0
 text = "Você Venceu!"
+metadata/_edit_use_anchors_ = true
 
 [node name="Attack" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -323,6 +330,7 @@ offset_top = 8.0
 offset_right = 66.0
 offset_bottom = 48.0
 text = "Attack"
+metadata/_edit_use_anchors_ = true
 
 [node name="Defense" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -331,6 +339,7 @@ offset_top = 8.0
 offset_right = 158.0
 offset_bottom = 48.0
 text = "Defese"
+metadata/_edit_use_anchors_ = true
 
 [node name="Skip" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -339,6 +348,7 @@ offset_top = 8.0
 offset_right = 248.0
 offset_bottom = 48.0
 text = "Skip"
+metadata/_edit_use_anchors_ = true
 
 [node name="XPLabel" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -348,6 +358,7 @@ offset_right = 201.0
 offset_bottom = -121.0
 text = "XP: 0 / 100 | Nível: 1
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="XPBar" type="ProgressBar" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -357,6 +368,7 @@ offset_right = 73.0
 offset_bottom = -119.0
 theme_override_styles/background = SubResource("StyleBoxFlat_3ki0w")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fid7t")
+metadata/_edit_use_anchors_ = true
 
 [node name="XPText" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
@@ -364,3 +376,4 @@ offset_left = 40.0
 offset_top = -144.0
 offset_right = 80.0
 offset_bottom = -121.0
+metadata/_edit_use_anchors_ = true
