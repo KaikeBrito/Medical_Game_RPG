@@ -1,32 +1,32 @@
-# Character.gd
 extends CharacterBody2D
 class_name Character
 
-# 🔹 Categoria de variáveis exportáveis no editor
+# 🔹 Variáveis exportáveis
 @export_category("Variables")
-@export var move_speed: float = 64.0        # Velocidade de movimento
-@export var friction: float = 0.2           # Atrito para desacelerar
-@export var acceleration: float = 0.2       # Aceleração ao mover
+@export var move_speed: float = 64.0
+@export var friction: float = 0.2
+@export var acceleration: float = 0.2
+@export var attack_duration: float = 0.3
+@export var canvas_layer: CanvasLayer  # Arraste o CanvasLayer aqui no editor
 
-# 🔹 Referência ao CanvasLayer (se precisar manipular HUD/UI)
+# 🔹 Referências
 @export_category("References")
-@export var canvas_layer: CanvasLayer   # Arraste o CanvasLayer aqui
+@export var animation_tree: AnimationTree
+@export var attack_timer: Timer
+@export var attack_area: Area2D
 
-# 🔹 Objetos exportáveis
-@export_category("Objects")
-@export var animation_tree: AnimationTree   # Arraste seu AnimationTree aqui
-@export var attack_timer: Timer             # Arraste seu Timer aqui
-
-var _state_machine                          # Máquina de estados da animação
-var _is_attacking: bool = false             # Flag de ataque
+var _state_machine
+var _is_attacking: bool = false
 
 func _ready() -> void:
-	# Configura máquina de estados
 	_state_machine = animation_tree.get("parameters/playback")
-	# Garante que o personagem entra no grupo correto
 	add_to_group("character")
-	# Conecta o sinal de timeout do Timer
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	attack_area.body_entered.connect(_on_attack_area_body_entered)
+	attack_area.monitoring = false
+	canvas_layer = get_tree().get_first_node_in_group("Inventory")
+	if canvas_layer == null:
+		push_error("CanvasLayer do inventário não encontrado!")
 
 func _physics_process(delta: float) -> void:
 	_move()
@@ -35,26 +35,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _move() -> void:
-	var direction := Vector2(
-		Input.get_axis("move_left", "move_right"),
-		Input.get_axis("move_up",   "move_down")
-	)
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction != Vector2.ZERO:
-		# Atualiza blend positions
 		animation_tree.set("parameters/idle/blend_position", direction)
 		animation_tree.set("parameters/walk/blend_position", direction)
 		animation_tree.set("parameters/attack/blend_position", direction)
-		# Aplica aceleração
-		velocity.x = lerp(velocity.x, direction.normalized().x * move_speed, acceleration)
-		velocity.y = lerp(velocity.y, direction.normalized().y * move_speed, acceleration)
+		velocity = velocity.lerp(direction.normalized() * move_speed, acceleration)
 	else:
-		# Aplica atrito
-		velocity.x = lerp(velocity.x, 0.0, friction)
-		velocity.y = lerp(velocity.y, 0.0, friction)
+		velocity = velocity.lerp(Vector2.ZERO, friction)
 
 func _attack() -> void:
 	if Input.is_action_just_pressed("attack") and not _is_attacking:
-		set_physics_process(false)
+		attack_area.monitoring = true
+		attack_timer.wait_time = attack_duration
 		attack_timer.start()
 		_is_attacking = true
 
@@ -67,6 +60,12 @@ func _animate() -> void:
 		_state_machine.travel("idle")
 
 func _on_attack_timer_timeout() -> void:
-	# Fim do ataque
+	attack_area.monitoring = false
 	set_physics_process(true)
 	_is_attacking = false
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		print("Inimigo detectado! Iniciando batalha...")
+		await get_tree().create_timer(0.2).timeout
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/battles/battle_scene.tscn")

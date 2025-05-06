@@ -35,6 +35,7 @@ var player: Node2D = null
 var health := 50  # Vida inicial do slime
 
 func _ready() -> void:
+	add_to_group("Enemy")  # Adiciona ao grupo "enemy"
 	state_machine = animation_tree["parameters/playback"]
 	var plist = get_tree().get_nodes_in_group("Player")
 	if plist.size() > 0:

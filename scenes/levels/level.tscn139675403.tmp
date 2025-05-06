@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dnstwjij6ymes"]
+[gd_scene load_steps=16 format=4 uid="uid://dnstwjij6ymes"]
 
 [ext_resource type="PackedScene" uid="uid://dnhf6anjw7764" path="res://scenes/terrains/terrain.tscn" id="1_mbbpy"]
 [ext_resource type="Texture2D" uid="uid://cwrkhg5wtcd3u" path="res://mystic_woods_free_2.2/sprites/objects/objects.png" id="3_mbbpy"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dytfsax6uv1rp" path="res://scenes/character/character.tscn" id="6_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://cgxqxsxuckxcm" path="res://scenes/character/slime.tscn" id="8_icy5c"]
 [ext_resource type="PackedScene" uid="uid://bduaadanx7vuh" path="res://scenes/components/door_component.tscn" id="8_ouxo3"]
-[ext_resource type="Script" uid="uid://cht8nb5uoq2ny" path="res://scenes/inventory/inventory.gd" id="8_xfk5q"]
 [ext_resource type="Script" uid="uid://b5j0jm3sxtnom" path="res://scripts/world/portal.gd" id="9_icy5c"]
 [ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="10_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://dq3dojceenpwd" path="res://scenes/levels/level_village.tscn" id="10_rmjfq"]
@@ -73,15 +72,14 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -8)
 
-[node name="Character" parent="YSort" node_paths=PackedStringArray("canvas_layer") instance=ExtResource("6_xfk5q")]
+[node name="Character" parent="YSort" instance=ExtResource("6_xfk5q")]
 position = Vector2(296, 184)
-canvas_layer = NodePath("../../CanvasLayer")
 
 [node name="objects" type="TileMapLayer" parent="YSort"]
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(16, 0)
-tile_map_data = PackedByteArray("AABCAC0AAAALAAIAAABJADMAAAAFAAAAAABGADEAAAAKAAAAAAACAAIAAAAAAAUAAAAJAAMAAAAAAAUAAAAAABEAAAAAAAUAAAAHABEAAAAAAAUAAAAYAAkAAAAGAAcAAAAJAAkAAAAKAAcAAAABAAkAAAAKAAcAAAAYAAAAAAAKAAcAAAAaAAAAAAAIAAYAAAAOAAcAAAAAAAAAAAAMAAIAAAAFAAAAAAAYAAsAAAAAAAEAAAAIAAYAAAAAAAEAAAASABEAAAAAAAEAAAAMAAcAAAAAAAUAAAAXAAcAAAAFAAAAAAAZAA8AAAAAAAUAAAACAAAAAAAGAAcAAAAAAAwAAAAAAAEAAAAaAAMAAAAFAAAAAAA=")
+tile_map_data = PackedByteArray("AABCAC0AAAALAAIAAABJADMAAAAFAAAAAABGADEAAAAKAAAAAAACAAIAAAAAAAUAAAAJAAMAAAAAAAUAAAAAABEAAAAAAAUAAAAHABEAAAAAAAUAAAAYAAkAAAAGAAcAAAAJAAkAAAAKAAcAAAABAAkAAAAKAAcAAAAYAAAAAAAKAAcAAAAaAAAAAAAIAAYAAAAOAAcAAAAAAAAAAAAMAAIAAAAFAAAAAAAYAAsAAAAAAAEAAAAIAAYAAAAAAAEAAAASABEAAAAAAAEAAAAMAAcAAAAAAAUAAAAXAAcAAAAFAAAAAAAZAA8AAAAAAAUAAAAAAAQAAAAGAAcAAAAEAAQAAAAGAAcAAAACAAQAAAAGAAcAAAAEAAIAAAAGAAcAAAAEAAAAAAAGAAcAAAAAAAAAAAAGAAcAAAAAAAIAAAAGAAcAAAACAAAAAAAGAAcAAAD//wgAAAAIAAYAAAD//wkAAAAIAAYAAAD//woAAAAIAAYAAAAAAAwAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_icy5c")
 
 [node name="Slime" parent="YSort" instance=ExtResource("8_icy5c")]
@@ -93,12 +91,11 @@ position = Vector2(0, 20)
 [node name="Collision" parent="YSort/Slime/DetectetionArea" index="0"]
 position = Vector2(0, 16)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["Inventory"]]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("6_7pb6i")
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("10_7pb6i")]
 visible = false
-script = ExtResource("8_xfk5q")
 
 [node name="Item1" type="Area2D" parent="."]
 position = Vector2(296, 120)

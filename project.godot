@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 BattleParams="*res://scripts/globais/battle_params.gd"
+GameManager="*res://scripts/globais/game_manager.gd"
 
 [display]
 
@@ -29,6 +30,7 @@ window/stretch/mode="canvas_items"
 
 Player=""
 Enemy=""
+Inventory=""
 
 [input]
 
