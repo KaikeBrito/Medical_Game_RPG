@@ -44,12 +44,19 @@ func _move() -> void:
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 
+# Na função _attack():
 func _attack() -> void:
 	if Input.is_action_just_pressed("attack") and not _is_attacking:
-		attack_area.monitoring = true
+		attack_area.set_deferred("monitoring", true)  # Alterado para set_deferred
 		attack_timer.wait_time = attack_duration
 		attack_timer.start()
 		_is_attacking = true
+
+# Na função _on_attack_timer_timeout():
+func _on_attack_timer_timeout() -> void:
+	attack_area.set_deferred("monitoring", false)  # Alterado para set_deferred
+	set_physics_process(true)
+	_is_attacking = false
 
 func _animate() -> void:
 	if _is_attacking:
@@ -59,13 +66,23 @@ func _animate() -> void:
 	else:
 		_state_machine.travel("idle")
 
-func _on_attack_timer_timeout() -> void:
-	attack_area.monitoring = false
-	set_physics_process(true)
-	_is_attacking = false
-
-func _on_attack_area_body_entered(body: Node2D) -> void:
+func _on_attack_area_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
-		print("Inimigo detectado! Iniciando batalha...")
-		await get_tree().create_timer(0.2).timeout
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/battles/battle_scene.tscn")
+		call_deferred("_start_battle", body)  # Adia a criação da batalha
+
+func _start_battle(enemy: Node2D):
+	# Carrega a cena de batalha e a coloca EM UMA CAMADA SEPARADA
+	var battle_scene = load("res://scenes/battles/battle_scene.tscn").instantiate()
+	battle_scene.name = "BattleScene"  # Adicione um nome único para referência
+	get_tree().root.add_child(battle_scene)
+	
+	# Centraliza a cena de batalha na viewport
+	var viewport_size = get_viewport().get_visible_rect().size
+	battle_scene.position = viewport_size / 2  # Posição central
+	
+	# Pausa APENAS a cena do level (não a cena de batalha)
+	get_tree().paused = true
+	
+	# Define prioridade de processamento da cena de batalha
+	battle_scene.process_mode = Node.PROCESS_MODE_ALWAYS  # Garante que a UI funcione
+	Global.current_enemy = enemy

@@ -118,5 +118,4 @@ func take_damage(amount: int):
 func die():
 	if player and player.has_method("gain_xp"):
 		player.gain_xp(30)
-		
-	queue_free()
+	call_deferred("queue_free")  # Alterado para call_deferred

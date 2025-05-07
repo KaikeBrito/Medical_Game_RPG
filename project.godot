@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-BattleParams="*res://scripts/globais/battle_params.gd"
-GameManager="*res://scripts/globais/game_manager.gd"
+Global="*res://scripts/globais/global.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

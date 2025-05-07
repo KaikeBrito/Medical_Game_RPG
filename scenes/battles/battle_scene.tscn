@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://h4utufpnv5u0"]
+[gd_scene load_steps=29 format=3 uid="uid://h4utufpnv5u0"]
 
 [ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_3ki0w"]
 [ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="1_g0lu4"]
@@ -198,6 +198,8 @@ states/idle_left/node = SubResource("AnimationNodeAnimation_mkkp0")
 states/idle_left/position = Vector2(307.391, 88.6667)
 graph_offset = Vector2(-212.609, 0)
 
+[sub_resource type="Theme" id="Theme_3ki0w"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ki0w"]
 bg_color = Color(0.172549, 0.796078, 0.313726, 1)
 corner_radius_top_left = 8
@@ -207,24 +209,26 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fid7t"]
 bg_color = Color(0.180392, 0.8, 0.443137, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="BattleScene" type="Node2D"]
-position = Vector2(320, 152)
+position = Vector2(589, 304)
 
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("1_3ki0w")
 
-[node name="Characters" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
 
-[node name="Player" type="CharacterBody2D" parent="Characters" groups=["Player"]]
-position = Vector2(176, 144)
+[node name="Characters" type="Node2D" parent="CanvasLayer"]
+z_index = 2
+texture_filter = 1
+position = Vector2(597, 319)
+
+[node name="Player" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Player"]]
+position = Vector2(-80, 0)
 script = ExtResource("2_3ki0w")
 
-[node name="Sprite" type="Sprite2D" parent="Characters/Player"]
+[node name="Sprite" type="Sprite2D" parent="CanvasLayer/Characters/Player"]
 texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("1_g0lu4")
@@ -232,148 +236,186 @@ hframes = 6
 vframes = 10
 frame = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/Player"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Characters/Player"]
 libraries = {
 &"": SubResource("AnimationLibrary_3obht")
 }
 
-[node name="ProgressBarPlayer" type="ProgressBar" parent="Characters/Player"]
+[node name="ProgressBarPlayer" type="ProgressBar" parent="CanvasLayer/Characters/Player"]
 offset_left = -40.0
-offset_top = 16.0
+offset_top = 20.0
 offset_right = 48.0
-offset_bottom = 43.0
+offset_bottom = 47.0
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShapePlayer" type="CollisionShape2D" parent="Characters/Player"]
+[node name="CollisionShapePlayer" type="CollisionShape2D" parent="CanvasLayer/Characters/Player"]
 shape = SubResource("RectangleShape2D_gvb6n")
 
-[node name="AnimationTree" type="AnimationTree" parent="Characters/Player"]
+[node name="AnimationTree" type="AnimationTree" parent="CanvasLayer/Characters/Player"]
 tree_root = SubResource("AnimationNodeStateMachine_ji6nl")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Area2D" type="Area2D" parent="Characters/Player"]
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Characters/Player"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Player/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Characters/Player/Area2D"]
 shape = SubResource("CapsuleShape2D_3ki0w")
 
-[node name="Enemy" type="CharacterBody2D" parent="Characters" groups=["Enemy"]]
-position = Vector2(344, 144)
+[node name="Enemy" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Enemy"]]
+position = Vector2(80, 0)
 script = ExtResource("4_fid7t")
 
-[node name="Texture" type="Sprite2D" parent="Characters/Enemy"]
+[node name="Texture" type="Sprite2D" parent="CanvasLayer/Characters/Enemy"]
 texture_filter = 1
-position = Vector2(0, 1)
+position = Vector2(23, 1)
 texture = ExtResource("2_gvb6n")
 flip_h = true
 hframes = 7
 vframes = 13
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Characters/Enemy"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Characters/Enemy"]
 libraries = {
 &"": SubResource("AnimationLibrary_yccpy")
 }
 
-[node name="ProgressBarEnemy" type="ProgressBar" parent="Characters/Enemy"]
-offset_left = -40.0
-offset_top = 16.0
-offset_right = 48.0
-offset_bottom = 43.0
+[node name="ProgressBarEnemy" type="ProgressBar" parent="CanvasLayer/Characters/Enemy"]
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 68.0
+offset_bottom = 47.0
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="Characters/Enemy"]
-position = Vector2(0, 1)
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="CanvasLayer/Characters/Enemy"]
+position = Vector2(23, 0)
 shape = SubResource("RectangleShape2D_gvb6n")
 
-[node name="AnimationTreeEnemy" type="AnimationTree" parent="Characters/Enemy"]
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="CanvasLayer/Characters/Enemy"]
 tree_root = SubResource("AnimationNodeStateMachine_vjuxw")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_left = 320.0
-offset_top = 152.0
-offset_right = 360.0
-offset_bottom = 192.0
-metadata/_edit_use_anchors_ = true
-
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 456.0
-offset_top = 368.0
-offset_right = 712.0
-offset_bottom = 424.0
-metadata/_edit_use_anchors_ = true
-
-[node name="DefeatLabel" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 72.0
-offset_top = -48.0
-offset_right = 175.0
-offset_bottom = -25.0
-text = "Você Perdeu!"
-metadata/_edit_use_anchors_ = true
-
-[node name="VictoryLabel" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 72.0
-offset_top = -48.0
-offset_right = 175.0
-offset_bottom = -25.0
-text = "Você Venceu!"
+layout_direction = 1
+anchors_preset = -1
+anchor_left = -0.102
+anchor_top = 0.103
+anchor_right = -0.102
+anchor_bottom = 0.103
+offset_left = 588.56
+offset_top = 303.84
+offset_right = 895.152
+offset_bottom = 366.032
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="Attack" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 66.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.145
+anchor_top = 0.5
+anchor_right = 0.145
+anchor_bottom = 0.5
+offset_left = -29.12
+offset_top = -20.0
+offset_right = 28.88
+offset_bottom = 20.0
 text = "Attack"
 metadata/_edit_use_anchors_ = true
 
 [node name="Defense" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 8.0
-offset_right = 158.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = 20.0
 text = "Defese"
 metadata/_edit_use_anchors_ = true
 
 [node name="Skip" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 8.0
-offset_right = 248.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.859
+anchor_top = 0.5
+anchor_right = 0.859
+anchor_bottom = 0.5
+offset_left = -27.904
+offset_top = -20.0
+offset_right = 28.096
+offset_bottom = 20.0
 text = "Skip"
 metadata/_edit_use_anchors_ = true
 
-[node name="XPLabel" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = -170.0
-offset_right = 201.0
-offset_bottom = -121.0
+[node name="DefeatLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.537
+anchor_top = -1.866
+anchor_right = 0.537
+anchor_bottom = -1.866
+offset_left = -125.36
+offset_top = 1633.52
+offset_right = -22.36
+offset_bottom = 1656.52
+text = "Você Perdeu!"
+metadata/_edit_use_anchors_ = true
+
+[node name="VictoryLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.533
+anchor_top = -1.848
+anchor_right = 0.533
+anchor_bottom = -1.848
+offset_left = -120.24
+offset_top = 1620.56
+offset_right = -17.2401
+offset_bottom = 1643.56
+text = "Você Venceu!"
+metadata/_edit_use_anchors_ = true
+
+[node name="XPLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.488783
+anchor_top = -3.02657
+anchor_right = 0.488783
+anchor_bottom = -3.02657
+offset_left = -113.642
+offset_top = 2321.13
+offset_right = 40.3582
+offset_bottom = 2370.13
 text = "XP: 0 / 100 | Nível: 1
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="XPBar" type="ProgressBar" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = -146.0
-offset_right = 73.0
-offset_bottom = -119.0
+[node name="XPBar" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = -1
+anchor_left = 0.137022
+anchor_top = -1.866
+anchor_right = 0.196397
+anchor_bottom = -1.866
+offset_left = 287.611
+offset_top = 1601.52
+offset_right = 314.611
+offset_bottom = 1628.52
+theme = SubResource("Theme_3ki0w")
 theme_override_styles/background = SubResource("StyleBoxFlat_3ki0w")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fid7t")
 metadata/_edit_use_anchors_ = true
 
-[node name="XPText" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = -144.0
-offset_right = 80.0
-offset_bottom = -121.0
+[node name="XPText" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.169942
+anchor_top = -1.86614
+anchor_right = 0.170493
+anchor_bottom = -1.866
+offset_left = 277.474
+offset_top = 1603.62
+offset_right = 317.322
+offset_bottom = 1626.61
 metadata/_edit_use_anchors_ = true

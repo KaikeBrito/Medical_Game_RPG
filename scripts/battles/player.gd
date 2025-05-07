@@ -42,6 +42,22 @@ func take_damage(amount):
 	if health == 0:
 		die()
 
+# player.gd (cena de level)
+func update_xp_ui():
+	# Atualiza a barra e o texto de XP
+	var current_xp = xp_system.current_xp
+	var max_xp = xp_system.xp_to_next_level
+	var level = xp_system.level
+	
+	# Se você tem uma referência direta à UI no level:
+	if has_node("/root/Level/UI/XPBar"):
+		var xp_bar = get_node("/root/Level/UI/XPBar") as ProgressBar
+		xp_bar.value = current_xp
+		xp_bar.max_value = max_xp
+	if has_node("/root/Level/UI/XPLabel"):
+		var xp_label = get_node("/root/Level/UI/XPLabel") as Label
+		xp_label.text = "Nível %d - %d / %d XP" % [level, current_xp, max_xp]
+
 func update_health_bar():
 	progress_bar.value = float(health) / max_health * 100
 
