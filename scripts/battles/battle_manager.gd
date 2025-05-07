@@ -1,17 +1,17 @@
 # res://scripts/battles/battle_manager.gd
 extends Node   # este script está no nó BattleManager, filho de BattleScene
 
-@onready var player           = $"../Characters/Player"
-@onready var enemy            = $"../Characters/Enemy"
-@onready var attack_button    = $"../CanvasLayer/Panel/Attack"    as Button
-@onready var defense_button   = $"../CanvasLayer/Panel/Defense"   as Button
+@onready var player           = $"../CanvasLayer/Characters/Player"
+@onready var enemy            = $"../CanvasLayer/Characters/Enemy"
+@onready var attack_button    = $"../CanvasLayer//Panel/Attack"    as Button
+@onready var defense_button   = $"../CanvasLayer//Panel/Defense"   as Button
 @onready var skip_button      = $"../CanvasLayer/Panel/Skip"      as Button
 @onready var player_bar       = player.get_node("ProgressBarPlayer") as ProgressBar
 @onready var enemy_bar        = enemy.get_node("ProgressBarEnemy")  as ProgressBar
-@onready var victory_label    = $"../CanvasLayer/Panel/VictoryLabel" as Label
-@onready var defeat_label     = $"../CanvasLayer/Panel/DefeatLabel"  as Label
-@onready var xp_bar = $"../CanvasLayer/Panel/XPBar" as ProgressBar
-@onready var xp_label = $"../CanvasLayer/Panel/XPLabel" as Label
+@onready var victory_label    = $"../CanvasLayer/VictoryLabel" as Label
+@onready var defeat_label     = $"../CanvasLayer/DefeatLabel"  as Label
+@onready var xp_bar = $"../CanvasLayer/XPBar" as ProgressBar
+@onready var xp_label = $"../CanvasLayer/XPLabel" as Label
 
 
 var player_turn      = true
@@ -94,21 +94,34 @@ func _update_xp_bar():
 	
 
 func _on_victory():
-	# concede XP
+	# Concede XP e atualiza UI
 	player.xp_system.gain_xp(50)
-	# anima a barra
 	_update_xp_bar()
 	victory_label.visible = true
-	# … desabilita botões …
+	attack_button.disabled = true
+	defense_button.disabled = true
+	skip_button.disabled = true
+	
 	await get_tree().create_timer(2.0).timeout
-	# volta para a cena de mapa
-	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+	
+	if Global.current_enemy != null:
+		Global.current_enemy.queue_free()
+		Global.current_enemy = null
+	
+	get_tree().paused = false
+	# Remove a cena de batalha COMPLETA (nó pai)
+	get_parent().queue_free()  # Alterado para remover a cena inteira
 
 
 func _on_defeat():
-	defeat_label.visible   = true
-	attack_button.disabled  = true
+	defeat_label.visible = true
+	attack_button.disabled = true
 	defense_button.disabled = true
-	skip_button.disabled    = true
+	skip_button.disabled = true
+	
 	await get_tree().create_timer(2.0).timeout
+	
+	get_tree().paused = false
+	# Remove a cena de batalha antes de recarregar
+	get_parent().queue_free()  # Adicionado aqui também
 	get_tree().reload_current_scene()

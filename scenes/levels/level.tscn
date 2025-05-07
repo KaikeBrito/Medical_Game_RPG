@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dnstwjij6ymes"]
+[gd_scene load_steps=18 format=4 uid="uid://dnstwjij6ymes"]
 
 [ext_resource type="PackedScene" uid="uid://dnhf6anjw7764" path="res://scenes/terrains/terrain.tscn" id="1_mbbpy"]
 [ext_resource type="Texture2D" uid="uid://cwrkhg5wtcd3u" path="res://mystic_woods_free_2.2/sprites/objects/objects.png" id="3_mbbpy"]
@@ -51,6 +51,8 @@ sources/0 = SubResource("TileSetAtlasSource_mbbpy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ouxo3"]
 size = Vector2(64, 8)
+
+[sub_resource type="Theme" id="Theme_qogh7"]
 
 [node name="Level" type="Node2D"]
 
@@ -117,6 +119,28 @@ target_scene = ExtResource("10_rmjfq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
 position = Vector2(80, 284)
 shape = SubResource("RectangleShape2D_ouxo3")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="XPBar" type="ProgressBar" parent="UI"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 15)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.0
+offset_top = -99.0
+offset_right = -304.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qogh7")
+
+[node name="XPText" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="body_entered" from="Item1" to="Item1" method="_on_body_entered"]
 
