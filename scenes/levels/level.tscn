@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dnstwjij6ymes"]
+[gd_scene load_steps=19 format=4 uid="uid://dnstwjij6ymes"]
 
 [ext_resource type="PackedScene" uid="uid://dnhf6anjw7764" path="res://scenes/terrains/terrain.tscn" id="1_mbbpy"]
 [ext_resource type="Texture2D" uid="uid://cwrkhg5wtcd3u" path="res://mystic_woods_free_2.2/sprites/objects/objects.png" id="3_mbbpy"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b5j0jm3sxtnom" path="res://scripts/world/portal.gd" id="9_icy5c"]
 [ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="10_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://dq3dojceenpwd" path="res://scenes/levels/level_village.tscn" id="10_rmjfq"]
+[ext_resource type="PackedScene" uid="uid://dinm2votyqanu" path="res://scenes/character/npc_village.tscn" id="13_qogh7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbbpy"]
 resource_name = "objects"
@@ -59,6 +60,7 @@ size = Vector2(64, 8)
 [node name="Terrain" parent="." instance=ExtResource("1_mbbpy")]
 
 [node name="Components" type="Node2D" parent="."]
+texture_filter = 1
 
 [node name="DoorComponent" parent="Components" instance=ExtResource("8_ouxo3")]
 z_index = 1
@@ -76,7 +78,7 @@ y_sort_enabled = true
 position = Vector2(0, -8)
 
 [node name="Character" parent="YSort" node_paths=PackedStringArray("canvas_layer") instance=ExtResource("6_xfk5q")]
-position = Vector2(296, 184)
+position = Vector2(279, 127)
 canvas_layer = NodePath("../../CanvasLayer")
 
 [node name="objects" type="TileMapLayer" parent="YSort"]
@@ -87,13 +89,11 @@ tile_map_data = PackedByteArray("AABCAC0AAAALAAIAAABJADMAAAAFAAAAAABGADEAAAAKAAA
 tile_set = SubResource("TileSet_icy5c")
 
 [node name="Slime" parent="YSort" instance=ExtResource("8_icy5c")]
-position = Vector2(80, 136)
+position = Vector2(86, 141)
 
-[node name="Collision" parent="YSort/Slime" index="1"]
-position = Vector2(0, 20)
-
-[node name="Collision" parent="YSort/Slime/DetectetionArea" index="0"]
-position = Vector2(0, 16)
+[node name="NpcVillage" parent="YSort" instance=ExtResource("13_qogh7")]
+texture_filter = 1
+position = Vector2(279, 100)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["Inventory"]]
 script = ExtResource("6_7pb6i")
@@ -143,5 +143,3 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [connection signal="body_entered" from="Item1" to="Item1" method="_on_body_entered"]
-
-[editable path="YSort/Slime"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq3dojceenpwd"]
+[gd_scene load_steps=7 format=3 uid="uid://dq3dojceenpwd"]
 
 [ext_resource type="PackedScene" uid="uid://k2vd0e4qndhk" path="res://scenes/terrains/village.tscn" id="1_e2hwa"]
+[ext_resource type="PackedScene" uid="uid://bduaadanx7vuh" path="res://scenes/components/door_component.tscn" id="2_krcr1"]
 [ext_resource type="PackedScene" uid="uid://dytfsax6uv1rp" path="res://scenes/character/character.tscn" id="2_nolxt"]
 [ext_resource type="PackedScene" uid="uid://cpvlxtulustjb" path="res://scenes/components/tree.tscn" id="3_nolxt"]
 [ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="4_l7ocm"]
@@ -26,16 +27,60 @@ func  add_item_inventory(sprite: Texture) -> bool:
 [node name="LevelVillage" type="Node2D"]
 
 [node name="Village" parent="." instance=ExtResource("1_e2hwa")]
+position = Vector2(0, 4)
+
+[node name="Components" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="DoorComponent" parent="Components" instance=ExtResource("2_krcr1")]
+z_index = 1
+position = Vector2(-72, 300)
+_teleport_position = Vector2(1152, 744)
+
+[node name="DoorComponent2" parent="Components" instance=ExtResource("2_krcr1")]
+z_index = 1
+position = Vector2(617, 237)
+_teleport_position = Vector2(328, 120)
 
 [node name="YSort" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 
 [node name="Character" parent="YSort" instance=ExtResource("2_nolxt")]
-position = Vector2(1152, 720)
+position = Vector2(145, -5)
 
 [node name="Tree" parent="YSort" instance=ExtResource("3_nolxt")]
-position = Vector2(1080, 832)
+position = Vector2(1428, 806)
+
+[node name="Tree2" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(748, 496)
+
+[node name="Tree3" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(965, 152)
+
+[node name="Tree4" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(1426, 118)
+
+[node name="Tree5" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(1732, 129)
+
+[node name="Tree6" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(1915, 352)
+
+[node name="Tree7" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(1921, 635)
+
+[node name="Tree8" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(176, 377)
+
+[node name="Tree9" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(302, 654)
+
+[node name="Tree10" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(1661, 942)
+
+[node name="Tree11" parent="YSort" instance=ExtResource("3_nolxt")]
+position = Vector2(788, 840)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_krcr1")
