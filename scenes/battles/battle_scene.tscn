@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://h4utufpnv5u0"]
+[gd_scene load_steps=30 format=3 uid="uid://h4utufpnv5u0"]
 
 [ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_3ki0w"]
 [ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="1_g0lu4"]
 [ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="2_3ki0w"]
+[ext_resource type="Texture2D" uid="uid://bfh3kh6wutihy" path="res://sprites/Background/battleback1.png" id="2_fid7t"]
 [ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="2_gvb6n"]
 [ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="4_fid7t"]
 
@@ -84,6 +85,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvb6n"]
+size = Vector2(42, 40)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvb6n"]
 animation = &"attack"
@@ -220,21 +222,25 @@ script = ExtResource("1_3ki0w")
 layer = 100
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_right = 1273.0
-offset_bottom = 717.0
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 1160.0
+offset_bottom = 650.0
+texture = ExtResource("2_fid7t")
 
 [node name="Characters" type="Node2D" parent="CanvasLayer"]
 z_index = 2
 texture_filter = 1
-position = Vector2(597, 319)
+position = Vector2(610, 314)
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Player"]]
-position = Vector2(-80, 0)
+position = Vector2(-171, -8)
 script = ExtResource("2_3ki0w")
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayer/Characters/Player"]
 texture_filter = 1
-position = Vector2(0, -8)
+position = Vector2(3, -15)
+scale = Vector2(2, 2)
 texture = ExtResource("1_g0lu4")
 hframes = 6
 vframes = 10
@@ -246,13 +252,14 @@ libraries = {
 }
 
 [node name="ProgressBarPlayer" type="ProgressBar" parent="CanvasLayer/Characters/Player"]
-offset_left = -40.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 47.0
+offset_left = -41.0
+offset_top = 37.0
+offset_right = 47.0
+offset_bottom = 64.0
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShapePlayer" type="CollisionShape2D" parent="CanvasLayer/Characters/Player"]
+position = Vector2(3, 2)
 shape = SubResource("RectangleShape2D_gvb6n")
 
 [node name="AnimationTree" type="AnimationTree" parent="CanvasLayer/Characters/Player"]
@@ -260,8 +267,11 @@ tree_root = SubResource("AnimationNodeStateMachine_ji6nl")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Area2D" type="Area2D" parent="CanvasLayer/Characters/Player"]
+position = Vector2(-2, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Characters/Player/Area2D"]
+position = Vector2(5, 0)
+scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_3ki0w")
 
 [node name="Enemy" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Enemy"]]
@@ -270,7 +280,8 @@ script = ExtResource("4_fid7t")
 
 [node name="Texture" type="Sprite2D" parent="CanvasLayer/Characters/Enemy"]
 texture_filter = 1
-position = Vector2(23, 1)
+position = Vector2(82, -6)
+scale = Vector2(2, 2)
 texture = ExtResource("2_gvb6n")
 flip_h = true
 hframes = 7
@@ -282,14 +293,14 @@ libraries = {
 }
 
 [node name="ProgressBarEnemy" type="ProgressBar" parent="CanvasLayer/Characters/Enemy"]
-offset_left = -20.0
-offset_top = 20.0
-offset_right = 68.0
-offset_bottom = 47.0
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 127.0
+offset_bottom = 56.0
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShapeEnemy" type="CollisionShape2D" parent="CanvasLayer/Characters/Enemy"]
-position = Vector2(23, 0)
+position = Vector2(80, -3)
 shape = SubResource("RectangleShape2D_gvb6n")
 
 [node name="AnimationTreeEnemy" type="AnimationTree" parent="CanvasLayer/Characters/Enemy"]
@@ -304,10 +315,10 @@ anchor_left = -0.102
 anchor_top = 0.103
 anchor_right = -0.102
 anchor_bottom = 0.103
-offset_left = 588.56
-offset_top = 303.84
-offset_right = 895.152
-offset_bottom = 366.032
+offset_left = 570.504
+offset_top = 398.256
+offset_right = 877.096
+offset_bottom = 460.448
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -341,7 +352,7 @@ offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Defese"
+text = "Defense"
 metadata/_edit_use_anchors_ = true
 
 [node name="Skip" type="Button" parent="CanvasLayer/Panel"]
@@ -364,10 +375,10 @@ anchor_left = 0.537
 anchor_top = -1.866
 anchor_right = 0.537
 anchor_bottom = -1.866
-offset_left = -125.36
-offset_top = 1633.52
-offset_right = -22.36
-offset_bottom = 1656.52
+offset_left = -75.624
+offset_top = 1479.17
+offset_right = 27.376
+offset_bottom = 1502.17
 text = "Você Perdeu!"
 metadata/_edit_use_anchors_ = true
 
@@ -377,10 +388,10 @@ anchor_left = 0.533
 anchor_top = -1.848
 anchor_right = 0.533
 anchor_bottom = -1.848
-offset_left = -120.24
-offset_top = 1620.56
-offset_right = -17.2401
-offset_bottom = 1643.56
+offset_left = -72.016
+offset_top = 1467.5
+offset_right = 30.9839
+offset_bottom = 1490.5
 text = "Você Venceu!"
 metadata/_edit_use_anchors_ = true
 
@@ -388,12 +399,12 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = -1
 anchor_left = 0.488783
 anchor_top = -3.02657
-anchor_right = 0.488783
+anchor_right = 0.493123
 anchor_bottom = -3.02657
-offset_left = -113.642
-offset_top = 2321.13
-offset_right = 40.3582
-offset_bottom = 2370.13
+offset_left = -18.078
+offset_top = 2144.22
+offset_right = 135.922
+offset_bottom = 2193.22
 text = "XP: 0 / 100 | Nível: 1
 "
 metadata/_edit_use_anchors_ = true
@@ -403,12 +414,12 @@ custom_minimum_size = Vector2(0, 10)
 anchors_preset = -1
 anchor_left = 0.137022
 anchor_top = -1.866
-anchor_right = 0.196397
+anchor_right = 0.213411
 anchor_bottom = -1.866
-offset_left = 287.611
-offset_top = 1601.52
-offset_right = 314.611
-offset_bottom = 1628.52
+offset_left = 228.151
+offset_top = 1445.17
+offset_right = 255.151
+offset_bottom = 1472.17
 theme = SubResource("Theme_3ki0w")
 theme_override_styles/background = SubResource("StyleBoxFlat_3ki0w")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fid7t")

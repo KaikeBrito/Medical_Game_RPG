@@ -12,6 +12,6 @@ func _on_body_entered(body: Node) -> void:
 	# Debug: imprime quem entrou
 	print("Portal detectou:", body.name, "— grupos:", body.get_groups())
 	# Verifica se o corpo está no grupo "Character"
-	if body.is_in_group("character"):
+	if body.is_in_group("Player"):
 		print("Carregando cena:", target_scene.resource_path)
 		get_tree().call_deferred("change_scene_to_packed", target_scene)

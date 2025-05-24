@@ -20,7 +20,7 @@ var _is_attacking: bool = false
 
 func _ready() -> void:
 	_state_machine = animation_tree.get("parameters/playback")
-	add_to_group("character")
+	add_to_group("Player")
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	attack_area.body_entered.connect(_on_attack_area_body_entered)
 	attack_area.monitoring = false

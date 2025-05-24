@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdvamsqxpjfem"]
+
+[ext_resource type="Texture2D" uid="uid://d4a1wwq0alwjm" path="res://sprites/Background/parchment.png" id="1_ncqw0"]
+
+[sub_resource type="GDScript" id="GDScript_ncqw0"]
+script/source = "# UI_Pergaminho.gd
+extends CanvasLayer
+
+var pode_avancar := false  # só fecha quando terminar de digitar
+
+func _ready() -> void:
+	visible = false
+
+func mostrar_pergaminho(texto: String) -> void:
+	print(\"📜 mostrar_pergaminho chamado!\")
+	visible = true
+	pode_avancar = false
+	# limpa e inicia a digitação
+	$Panel/ScrollContainer/Label.text = \"\"
+	_type_text(texto)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if visible and pode_avancar and event.is_action_pressed(\"ui_accept\"):
+		visible = false
+
+# função assíncrona para digitar letra a letra
+func _type_text(texto: String) -> void:
+	# opcional: espera um pouquinho antes de começar
+	await get_tree().create_timer(0.05).timeout
+
+	for letra in texto:
+		$Panel/ScrollContainer/Label.text += letra
+		# intervalo entre cada caractere (ajuste para mais rápido/lento)
+		await get_tree().create_timer(0.02).timeout
+
+	# liberou a possibilidade de avançar/fechar
+	pode_avancar = true
+"
+
+[node name="UI_Pergaminho" type="CanvasLayer"]
+script = SubResource("GDScript_ncqw0")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(400, 0)
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="Sprite" type="Sprite2D" parent="Panel"]
+position = Vector2(576, 311)
+texture = ExtResource("1_ncqw0")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 131.0
+offset_right = 835.0
+offset_bottom = 501.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer"]
+layout_mode = 2
