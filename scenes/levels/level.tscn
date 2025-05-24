@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dnstwjij6ymes"]
+[gd_scene load_steps=21 format=4 uid="uid://dnstwjij6ymes"]
 
 [ext_resource type="PackedScene" uid="uid://dnhf6anjw7764" path="res://scenes/terrains/terrain.tscn" id="1_mbbpy"]
 [ext_resource type="Texture2D" uid="uid://cwrkhg5wtcd3u" path="res://mystic_woods_free_2.2/sprites/objects/objects.png" id="3_mbbpy"]
@@ -8,11 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dytfsax6uv1rp" path="res://scenes/character/character.tscn" id="6_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://cgxqxsxuckxcm" path="res://scenes/character/slime.tscn" id="8_icy5c"]
 [ext_resource type="PackedScene" uid="uid://bduaadanx7vuh" path="res://scenes/components/door_component.tscn" id="8_ouxo3"]
-[ext_resource type="Script" uid="uid://cht8nb5uoq2ny" path="res://scenes/inventory/inventory.gd" id="8_xfk5q"]
+[ext_resource type="Script" uid="uid://cht8nb5uoq2ny" path="res://scripts/world/inventory/inventory.gd" id="8_xfk5q"]
 [ext_resource type="Script" uid="uid://b5j0jm3sxtnom" path="res://scripts/world/portal.gd" id="9_icy5c"]
 [ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="10_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://dq3dojceenpwd" path="res://scenes/levels/level_village.tscn" id="10_rmjfq"]
-[ext_resource type="PackedScene" uid="uid://dinm2votyqanu" path="res://scenes/character/npc_village.tscn" id="13_qogh7"]
+[ext_resource type="PackedScene" uid="uid://bsia7lhv2q1ba" path="res://scenes/character/npc_village.tscn" id="13_qogh7"]
+[ext_resource type="PackedScene" uid="uid://bf8yjvdh0islo" path="res://scenes/components/pergaminho.tscn" id="14_8iyoh"]
+[ext_resource type="PackedScene" uid="uid://cdvamsqxpjfem" path="res://scenes/components/ui_pergaminho.tscn" id="15_mq31s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbbpy"]
 resource_name = "objects"
@@ -38,7 +40,7 @@ texture = ExtResource("3_mbbpy")
 0:5/size_in_atlas = Vector2i(3, 4)
 0:5/0 = 0
 0:5/0/texture_origin = Vector2i(0, 18)
-0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.62015, 8, -4.93878, 8, 8, -8, 8)
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.4832, -7.50494, 13.1666, -8.0316, 14.2199, 8.8216, -14.2199, 9.61159)
 8:6/size_in_atlas = Vector2i(2, 3)
 8:6/0 = 0
 8:6/0/texture_origin = Vector2i(0, 15)
@@ -51,7 +53,7 @@ sources/0 = SubResource("TileSetAtlasSource_mbbpy")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0f350"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ouxo3"]
-size = Vector2(64, 8)
+size = Vector2(64, 80.5)
 
 [sub_resource type="Theme" id="Theme_qogh7"]
 
@@ -64,13 +66,23 @@ texture_filter = 1
 
 [node name="DoorComponent" parent="Components" instance=ExtResource("8_ouxo3")]
 z_index = 1
-position = Vector2(328, 88)
+position = Vector2(552, 136)
 _teleport_position = Vector2(1152, 744)
 
 [node name="DoorComponent2" parent="Components" instance=ExtResource("8_ouxo3")]
 z_index = 1
 position = Vector2(1152, 712)
-_teleport_position = Vector2(328, 120)
+_teleport_position = Vector2(552, 165)
+
+[node name="DoorComponent3" parent="Components" instance=ExtResource("8_ouxo3")]
+z_index = 1
+position = Vector2(215, 264)
+_teleport_position = Vector2(513, 745)
+
+[node name="DoorComponent4" parent="Components" instance=ExtResource("8_ouxo3")]
+z_index = 1
+position = Vector2(513, 713)
+_teleport_position = Vector2(215, 295)
 
 [node name="YSort" type="Node2D" parent="."]
 z_index = 1
@@ -78,22 +90,22 @@ y_sort_enabled = true
 position = Vector2(0, -8)
 
 [node name="Character" parent="YSort" node_paths=PackedStringArray("canvas_layer") instance=ExtResource("6_xfk5q")]
-position = Vector2(279, 127)
+position = Vector2(344, 326)
 canvas_layer = NodePath("../../CanvasLayer")
 
 [node name="objects" type="TileMapLayer" parent="YSort"]
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(16, 0)
-tile_map_data = PackedByteArray("AABCAC0AAAALAAIAAABJADMAAAAFAAAAAABGADEAAAAKAAAAAAACAAIAAAAAAAUAAAAJAAMAAAAAAAUAAAAAABEAAAAAAAUAAAAHABEAAAAAAAUAAAAYAAkAAAAGAAcAAAAJAAkAAAAKAAcAAAABAAkAAAAKAAcAAAAYAAAAAAAKAAcAAAAaAAAAAAAIAAYAAAAOAAcAAAAAAAAAAAAMAAIAAAAFAAAAAAAYAAsAAAAAAAEAAAAIAAYAAAAAAAEAAAASABEAAAAAAAEAAAAMAAcAAAAAAAUAAAAXAAcAAAAFAAAAAAAZAA8AAAAAAAUAAAACAAAAAAAGAAcAAAAAAAwAAAAAAAEAAAAaAAMAAAAFAAAAAAA=")
+tile_map_data = PackedByteArray("AABCAC0AAAALAAIAAABJADMAAAAFAAAAAABGADEAAAAKAAAAAAADAB8AAAAAAAUAAAAGAB8AAAAAAAUAAAAJAB8AAAAAAAUAAAAMAB8AAAAAAAUAAAAPAB8AAAAAAAUAAAASAB8AAAAAAAUAAAAVAB8AAAAAAAUAAAAYAB8AAAAAAAUAAAAbAB8AAAAAAAUAAAAeAB8AAAAAAAUAAAAeABwAAAAAAAUAAAAbABwAAAAAAAUAAAAYABwAAAAAAAUAAAAVABwAAAAAAAUAAAASABwAAAAAAAUAAAAPABwAAAAAAAUAAAAMABwAAAAAAAUAAAAJABwAAAAAAAUAAAAGABwAAAAAAAUAAAAGABkAAAAAAAUAAAAGABYAAAAAAAUAAAAGABMAAAAAAAUAAAAGABAAAAAAAAUAAAAGAA0AAAAAAAUAAAAGAAoAAAAAAAUAAAAGAAcAAAAAAAUAAAAGAAQAAAAAAAUAAAADAAQAAAAAAAUAAAADAAcAAAAAAAUAAAADAAoAAAAAAAUAAAADAA0AAAAAAAUAAAADABAAAAAAAAUAAAADABMAAAAAAAUAAAADABYAAAAAAAUAAAADABkAAAAAAAUAAAADABwAAAAAAAUAAAAqAAEAAAAAAAUAAAAqAAQAAAAAAAUAAAAqAAcAAAAAAAUAAAAqAAoAAAAAAAUAAAAqAA0AAAAAAAUAAAAqABAAAAAAAAUAAAAqABUAAAAAAAUAAAAeABUAAAAAAAUAAAAhABUAAAAAAAUAAAAkABUAAAAAAAUAAAAnABUAAAAAAAUAAAAeABgAAAAAAAUAAAAqABMAAAAAAAUAAAAnABMAAAAAAAUAAAAnABAAAAAAAAUAAAAnAA0AAAAAAAUAAAAnAAoAAAAAAAUAAAAnAAcAAAAAAAUAAAAnAAEAAAAAAAUAAAAnAAQAAAAAAAUAAAAQABEAAAAAAAAAAAAeAAoAAAAAAAAAAAAcAAsAAAAIAAYAAAAUAAsAAAAIAAYAAAAkAAoAAAAFAAAAAAAJABIAAAAFAAAAAAAKAAkAAAAAAAEAAAAbAAcAAAAAAAEAAAAtABQAAAAAAAUAAAAtABcAAAAAAAUAAAAtABoAAAAAAAUAAAAtAB0AAAAAAAUAAAAqAB0AAAAAAAUAAAAqABoAAAAAAAUAAAAqABcAAAAAAAUAAAAnABcAAAAAAAUAAAAnABoAAAAAAAUAAAAnAB0AAAAAAAUAAAAkAB0AAAAAAAUAAAAhAB0AAAAAAAUAAAAhABoAAAAAAAUAAAAkABoAAAAAAAUAAAAkABcAAAAAAAUAAAAhABcAAAAAAAUAAAAbABUAAAAAAAUAAAAbABgAAAAAAAUAAAAtABEAAAAAAAUAAAAtAA4AAAAAAAUAAAAtAAsAAAAAAAUAAAAtAAgAAAAAAAUAAAAtAAUAAAAAAAUAAAAtAAIAAAAAAAUAAAAwAAIAAAAAAAUAAAAwAAUAAAAAAAUAAAAwAAgAAAAAAAUAAAAwAAsAAAAAAAUAAAAwAA4AAAAAAAUAAAAwABEAAAAAAAUAAAAwABQAAAAAAAUAAAAwABcAAAAAAAUAAAAwABoAAAAAAAUAAAAwAB0AAAAAAAUAAAAzAB0AAAAAAAUAAAAzABoAAAAAAAUAAAAzABcAAAAAAAUAAAAzABQAAAAAAAUAAAAzABEAAAAAAAUAAAAzAA4AAAAAAAUAAAAzAAsAAAAAAAUAAAAzAAgAAAAAAAUAAAAzAAUAAAAAAAUAAAAzAAIAAAAAAAUAAAAUAAEAAAAGAAcAAAAcAAEAAAAGAAcAAAAbAAQAAAAGAAcAAAAVAAQAAAAGAAcAAAAVAAYAAAAKAAcAAAAbAAYAAAAKAAcAAAADAAEAAAAKAAcAAAAFAAEAAAAKAAcAAAAJAAEAAAAIAAYAAAALAAEAAAAIAAYAAAANAAEAAAAIAAYAAAAPAAEAAAAIAAYAAAARAAEAAAAIAAYAAAAeAAEAAAAIAAYAAAAgAAEAAAAIAAYAAAAiAAEAAAAIAAYAAAAkAAEAAAAIAAYAAAA=")
 tile_set = SubResource("TileSet_icy5c")
 
 [node name="Slime" parent="YSort" instance=ExtResource("8_icy5c")]
-position = Vector2(86, 141)
+position = Vector2(296, 172)
 
 [node name="NpcVillage" parent="YSort" instance=ExtResource("13_qogh7")]
 texture_filter = 1
-position = Vector2(279, 100)
+position = Vector2(218, 326)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["Inventory"]]
 script = ExtResource("6_7pb6i")
@@ -113,11 +125,12 @@ shape = SubResource("RectangleShape2D_0f350")
 texture = ExtResource("5_7pb6i")
 
 [node name="Portal" type="Area2D" parent="." groups=["character"]]
+position = Vector2(407, 23)
 script = ExtResource("9_icy5c")
 target_scene = ExtResource("10_rmjfq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(80, 284)
+position = Vector2(3, 16.75)
 shape = SubResource("RectangleShape2D_ouxo3")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -141,5 +154,11 @@ theme = SubResource("Theme_qogh7")
 [node name="XPText" type="Label" parent="UI"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Pergaminho" parent="." instance=ExtResource("14_8iyoh")]
+position = Vector2(404, 278)
+
+[node name="UI_Pergaminho" parent="." instance=ExtResource("15_mq31s")]
+visible = false
 
 [connection signal="body_entered" from="Item1" to="Item1" method="_on_body_entered"]
