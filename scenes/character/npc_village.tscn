@@ -266,7 +266,7 @@ script = ExtResource("1_0q68v")
 texture_filter = 1
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_as5sy")
-animation = &"idle_down"
+animation = &"walk_up"
 autoplay = "idle_down"
 
 [node name="Collision" type="CollisionShape2D" parent="."]

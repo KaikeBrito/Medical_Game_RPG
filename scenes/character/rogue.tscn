@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://djkpfclihid8v"]
+
+[ext_resource type="Texture2D" uid="uid://cv6xj0pipw0av" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Rogue/Idle/Idle-Sheet.png" id="1_1wnvi"]
+[ext_resource type="Script" uid="uid://ct82rdmfqwm73" path="res://scenes/character/rogue.gd" id="1_sjqxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjqxa"]
+atlas = ExtResource("1_1wnvi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sua2"]
+atlas = ExtResource("1_1wnvi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wwus"]
+atlas = ExtResource("1_1wnvi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6sbj"]
+atlas = ExtResource("1_1wnvi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbmg6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjqxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sua2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wwus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6sbj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ie0tl"]
+size = Vector2(20, 30)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xpcf"]
+bg_color = Color(0, 0, 0, 0.415686)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q34ow"]
+font_size = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xamo"]
+radius = 86.0058
+
+[node name="Rogue" type="CharacterBody2D"]
+script = ExtResource("1_sjqxa")
+
+[node name="Animated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rbmg6")
+animation = &"idle"
+frame_progress = 0.0491337
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ie0tl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CaixadeDialogo" type="Label" parent="CanvasLayer"]
+offset_left = 99.0
+offset_top = 481.0
+offset_right = 1199.0
+offset_bottom = 631.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1xpcf")
+autowrap_mode = 2
+
+[node name="TextoDialogo" type="Label" parent="CanvasLayer"]
+offset_left = 150.0
+offset_top = 495.0
+offset_right = 1150.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[node name="LabelInteracao" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = -9.0
+label_settings = SubResource("LabelSettings_q34ow")
+
+[node name="InteractionZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+shape = SubResource("CircleShape2D_8xamo")

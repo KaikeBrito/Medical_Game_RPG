@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bf8yjvdh0islo" path="res://scenes/components/pergaminho.tscn" id="14_8iyoh"]
 [ext_resource type="PackedScene" uid="uid://cdvamsqxpjfem" path="res://scenes/components/ui_pergaminho.tscn" id="15_mq31s"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbbpy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mq31s"]
 resource_name = "objects"
 texture = ExtResource("3_mbbpy")
 0:1/0 = 0
@@ -48,7 +48,7 @@ texture = ExtResource("3_mbbpy")
 
 [sub_resource type="TileSet" id="TileSet_icy5c"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_mbbpy")
+sources/0 = SubResource("TileSetAtlasSource_mq31s")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0f350"]
 
