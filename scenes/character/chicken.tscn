@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxuxqgdqehcm2"]
+
+[ext_resource type="Script" uid="uid://canekvphtj48c" path="res://scripts/world/chicken.gd" id="1_uc2fo"]
+[ext_resource type="Texture2D" uid="uid://dnv55qwjkf2il" path="res://Farm RPG FREE 16x16 - Tiny Asset Pack/Farm RPG FREE 16x16 - Tiny Asset Pack/Farm Animals/Chicken Red.png" id="2_xtw0s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ibo6"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raqht"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvt6b"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0147"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r45ri"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_old78"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwmep"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4c7t"]
+atlas = ExtResource("2_xtw0s")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n474b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ibo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raqht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvt6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0147")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r45ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_old78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwmep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4c7t")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fhns5"]
+radius = 7.0
+
+[node name="Chicken" type="CharacterBody2D"]
+script = ExtResource("1_uc2fo")
+
+[node name="Animated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n474b")
+animation = &"walk_left"
+autoplay = "walk_left"
+frame_progress = 0.231376
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fhns5")

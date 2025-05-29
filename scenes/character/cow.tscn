@@ -1,0 +1,153 @@
+[gd_scene load_steps=21 format=3 uid="uid://buhb8bnsw2f0f"]
+
+[ext_resource type="Script" uid="uid://dtwq65jqb7iuk" path="res://scripts/world/cow.gd" id="1_e52jy"]
+[ext_resource type="Texture2D" uid="uid://b7m4l5r013fg2" path="res://Farm RPG FREE 16x16 - Tiny Asset Pack/Farm RPG FREE 16x16 - Tiny Asset Pack/Farm Animals/Male Cow Brown.png" id="2_c0auw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf4ev"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80n1"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnsss"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2h2k"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljv8f"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e52jy"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0auw"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d3y0"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwgbf"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_544kk"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_281rs"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y2sm"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebb5x"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcq83"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paswn"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo1qg"]
+atlas = ExtResource("2_c0auw")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_reujf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf4ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s80n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnsss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2h2k")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljv8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e52jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0auw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d3y0")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwgbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_544kk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_281rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y2sm")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebb5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcq83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paswn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo1qg")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75ted"]
+radius = 7.0
+
+[node name="Cow" type="CharacterBody2D"]
+script = ExtResource("1_e52jy")
+
+[node name="Animated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_reujf")
+animation = &"walk_left"
+autoplay = "walk_left"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_75ted")
