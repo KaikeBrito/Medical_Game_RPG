@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://dq3dojceenpwd"]
 
 [ext_resource type="PackedScene" uid="uid://k2vd0e4qndhk" path="res://scenes/terrains/village.tscn" id="1_e2hwa"]
-[ext_resource type="PackedScene" uid="uid://crj7ir33yvcfj" path="res://scripts/world/door_component_village.tscn" id="2_krcr1"]
+[ext_resource type="PackedScene" uid="uid://crj7ir33yvcfj" path="res://scenes/components/door_component_village.tscn" id="2_krcr1"]
 [ext_resource type="PackedScene" uid="uid://dytfsax6uv1rp" path="res://scenes/character/character.tscn" id="2_nolxt"]
 [ext_resource type="Texture2D" uid="uid://cwrkhg5wtcd3u" path="res://mystic_woods_free_2.2/sprites/objects/objects.png" id="4_5jt0b"]
 [ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="4_l7ocm"]

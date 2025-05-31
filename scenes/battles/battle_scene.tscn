@@ -213,7 +213,6 @@ corner_radius_bottom_left = 8
 bg_color = Color(0.180392, 0.8, 0.443137, 1)
 
 [node name="BattleScene" type="Node2D"]
-position = Vector2(589, 304)
 
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("1_3ki0w")
@@ -227,6 +226,7 @@ offset_top = -4.0
 offset_right = 1160.0
 offset_bottom = 650.0
 texture = ExtResource("2_fid7t")
+metadata/_edit_use_anchors_ = true
 
 [node name="Characters" type="Node2D" parent="CanvasLayer"]
 z_index = 2

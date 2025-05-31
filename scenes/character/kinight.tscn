@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://b4ud1edgn2hed"]
 
-[ext_resource type="Script" uid="uid://c7hr3l406mob4" path="res://scenes/character/kinight.gd" id="1_sbadw"]
+[ext_resource type="Script" uid="uid://c7hr3l406mob4" path="res://scripts/world/kinight.gd" id="1_sbadw"]
 [ext_resource type="Texture2D" uid="uid://clxx3fl3n6qvg" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Knight/Idle/Idle-Sheet.png" id="1_y6daq"]
 [ext_resource type="Texture2D" uid="uid://cteefx0mvfi8w" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Knight/Death/Death-Sheet.png" id="2_0humh"]
 [ext_resource type="Texture2D" uid="uid://blkwkqxl0tu71" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Knight/Run/Run-Sheet.png" id="2_sbadw"]

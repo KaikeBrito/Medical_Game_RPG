@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf8yjvdh0islo"]
 
 [ext_resource type="Script" uid="uid://do7cwxtf5w6qp" path="res://scripts/world/pergaminho.gd" id="1_t7syu"]
-[ext_resource type="Texture2D" uid="uid://dlo62plwrouod" path="res://sprites/Itens/Coletável_única 64x64.png" id="2_6eo27"]
+[ext_resource type="Texture2D" uid="uid://mv1b713sj7fb" path="res://Tiny Swords/Tiny Swords (Update 010)/UI/Banners/Banner_Vertical.png" id="2_t7syu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evcgn"]
 size = Vector2(12, 10)
@@ -10,8 +10,9 @@ size = Vector2(12, 10)
 script = ExtResource("1_t7syu")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_6eo27")
+position = Vector2(3.8147e-06, 1)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_t7syu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
