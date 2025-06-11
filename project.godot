@@ -15,6 +15,10 @@ run/main_scene="uid://h4utufpnv5u0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/driver="DirectSound "
+
 [autoload]
 
 Global="*res://scripts/globais/global.gd"

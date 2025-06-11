@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://b4ud1edgn2hed"]
 
-[ext_resource type="Script" uid="uid://c7hr3l406mob4" path="res://scripts/world/kinight.gd" id="1_sbadw"]
+[ext_resource type="Script" uid="uid://c7hr3l406mob4" path="res://scripts/character/kinight.gd" id="1_sbadw"]
 [ext_resource type="Texture2D" uid="uid://clxx3fl3n6qvg" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Knight/Idle/Idle-Sheet.png" id="1_y6daq"]
 [ext_resource type="Texture2D" uid="uid://cteefx0mvfi8w" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Knight/Death/Death-Sheet.png" id="2_0humh"]
 [ext_resource type="Texture2D" uid="uid://blkwkqxl0tu71" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Knight/Run/Run-Sheet.png" id="2_sbadw"]
@@ -183,7 +183,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp0wc"]
-size = Vector2(20, 30)
+size = Vector2(19, 36)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0humh"]
 bg_color = Color(0, 0, 0, 0.415686)
@@ -217,6 +217,7 @@ offset_right = 1199.0
 offset_bottom = 631.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0humh")
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextoDialogo" type="Label" parent="CanvasLayer"]
 offset_left = 150.0
@@ -226,6 +227,7 @@ offset_bottom = 615.0
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
 
@@ -235,6 +237,7 @@ offset_top = -32.0
 offset_right = 21.0
 offset_bottom = -9.0
 label_settings = SubResource("LabelSettings_3mso7")
+metadata/_edit_use_anchors_ = true
 
 [node name="InteractionZone" type="Area2D" parent="."]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://djkpfclihid8v"]
 
 [ext_resource type="Texture2D" uid="uid://cv6xj0pipw0av" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Rogue/Idle/Idle-Sheet.png" id="1_1wnvi"]
-[ext_resource type="Script" uid="uid://ct82rdmfqwm73" path="res://scripts/world/rogue.gd" id="1_sjqxa"]
+[ext_resource type="Script" uid="uid://ct82rdmfqwm73" path="res://scripts/character/rogue.gd" id="1_sjqxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjqxa"]
 atlas = ExtResource("1_1wnvi")

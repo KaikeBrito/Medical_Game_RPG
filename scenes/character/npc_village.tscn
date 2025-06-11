@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://bsia7lhv2q1ba"]
 
-[ext_resource type="Script" uid="uid://bnqfj0j4ho4gp" path="res://scripts/world/npc_village.gd" id="1_0q68v"]
+[ext_resource type="Script" uid="uid://bnqfj0j4ho4gp" path="res://scripts/character/npc_village.gd" id="1_0q68v"]
 [ext_resource type="Texture2D" uid="uid://dmnb43vqth5vf" path="res://Farm RPG FREE 16x16 - Tiny Asset Pack/Farm RPG FREE 16x16 - Tiny Asset Pack/Character/Idle.png" id="2_qighy"]
 [ext_resource type="Texture2D" uid="uid://rfupbpuy7rsi" path="res://Farm RPG FREE 16x16 - Tiny Asset Pack/Farm RPG FREE 16x16 - Tiny Asset Pack/Character/Walk.png" id="3_qighy"]
 
