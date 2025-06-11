@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://buhb8bnsw2f0f"]
 
-[ext_resource type="Script" uid="uid://dtwq65jqb7iuk" path="res://scripts/world/cow.gd" id="1_e52jy"]
+[ext_resource type="Script" uid="uid://dtwq65jqb7iuk" path="res://scripts/character/cow.gd" id="1_e52jy"]
 [ext_resource type="Texture2D" uid="uid://b7m4l5r013fg2" path="res://Farm RPG FREE 16x16 - Tiny Asset Pack/Farm RPG FREE 16x16 - Tiny Asset Pack/Farm Animals/Male Cow Brown.png" id="2_c0auw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf4ev"]
@@ -139,7 +139,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75ted"]
-radius = 7.0
+radius = 13.0
 
 [node name="Cow" type="CharacterBody2D"]
 script = ExtResource("1_e52jy")
@@ -150,4 +150,5 @@ animation = &"walk_left"
 autoplay = "walk_left"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 5)
 shape = SubResource("CircleShape2D_75ted")

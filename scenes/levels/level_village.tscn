@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dq3dojceenpwd"]
+[gd_scene load_steps=18 format=4 uid="uid://dq3dojceenpwd"]
 
 [ext_resource type="PackedScene" uid="uid://k2vd0e4qndhk" path="res://scenes/terrains/village.tscn" id="1_e2hwa"]
 [ext_resource type="PackedScene" uid="uid://crj7ir33yvcfj" path="res://scenes/components/door_component_village.tscn" id="2_krcr1"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://buhb8bnsw2f0f" path="res://scenes/character/cow.tscn" id="6_auwy8"]
 [ext_resource type="PackedScene" uid="uid://b4ud1edgn2hed" path="res://scenes/character/kinight.tscn" id="7_olywt"]
 [ext_resource type="PackedScene" uid="uid://djkpfclihid8v" path="res://scenes/character/rogue.tscn" id="8_wsy48"]
+[ext_resource type="PackedScene" uid="uid://cshapt0oj7reg" path="res://scenes/character/orc.tscn" id="9_d7gt0"]
+[ext_resource type="PackedScene" uid="uid://dw4ftho22htou" path="res://scenes/character/shaman.tscn" id="10_wmggd"]
+[ext_resource type="PackedScene" uid="uid://d0fu2vubvk034" path="res://scenes/character/crew.tscn" id="11_wmggd"]
+[ext_resource type="PackedScene" uid="uid://i8om4fnw1s7t" path="res://scenes/character/skull.tscn" id="12_aqwjf"]
+[ext_resource type="PackedScene" uid="uid://dstdaxckllb8x" path="res://scenes/character/skeleton.tscn" id="13_t2dcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_auwy8"]
 resource_name = "objects"
@@ -65,52 +70,99 @@ func  add_item_inventory(sprite: Texture) -> bool:
 [node name="LevelVillage" type="Node2D"]
 
 [node name="Village" parent="." instance=ExtResource("1_e2hwa")]
-position = Vector2(0, 4)
+position = Vector2(7, 9)
 
 [node name="Components" type="Node2D" parent="."]
 texture_filter = 1
 
 [node name="Door_component_village" parent="Components" instance=ExtResource("2_krcr1")]
-position = Vector2(241, 141)
-_teleport_position = Vector2(-761, 167)
+position = Vector2(250, 151)
+_teleport_position = Vector2(-761, 176)
 
 [node name="Door_component_village2" parent="Components" instance=ExtResource("2_krcr1")]
-position = Vector2(-763, 116)
-_teleport_position = Vector2(246, 192)
+position = Vector2(-749, 125)
+_teleport_position = Vector2(246, 210)
 
 [node name="Door_component_village3" parent="Components" instance=ExtResource("2_krcr1")]
-position = Vector2(865, 157)
-_teleport_position = Vector2(-744, 520)
+position = Vector2(874, 167)
+_teleport_position = Vector2(1857, 220)
 
 [node name="Door_component_village4" parent="Components" instance=ExtResource("2_krcr1")]
-position = Vector2(-747, 467)
-_teleport_position = Vector2(868, 210)
+position = Vector2(-739, 477)
+_teleport_position = Vector2(327, 381)
+
+[node name="Door_component_village5" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(330, 327)
+_teleport_position = Vector2(-743, 536)
+
+[node name="Door_component_village6" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(1837, 525)
+_teleport_position = Vector2(780, 390)
+
+[node name="Door_component_village7" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(794, 326)
+_teleport_position = Vector2(1841, 580)
+
+[node name="Door_component_village8" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(-739, 877)
+_teleport_position = Vector2(283, 545)
+
+[node name="Door_component_village10" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(1808, 925)
+_teleport_position = Vector2(835, 550)
+
+[node name="Door_component_village11" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(282, 486)
+_teleport_position = Vector2(-738, 926)
+
+[node name="Door_component_village12" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(1851, 158)
+_teleport_position = Vector2(873, 230)
+
+[node name="Door_component_village13" parent="Components" instance=ExtResource("2_krcr1")]
+position = Vector2(842, 502)
+_teleport_position = Vector2(1808, 979)
 
 [node name="YSort" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 
 [node name="Character" parent="YSort" instance=ExtResource("2_nolxt")]
-position = Vector2(545, 697)
+position = Vector2(558, 721)
 
 [node name="objects" type="TileMapLayer" parent="YSort"]
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(16, 0)
-tile_map_data = PackedByteArray("AAAZAAIAAAAAAAUAAAAWAAIAAAAAAAUAAAATAAIAAAAAAAUAAAAQAAIAAAAAAAUAAAANAAIAAAAAAAUAAAAKAAIAAAAAAAUAAAAHAAIAAAAAAAUAAAAEAAIAAAAAAAUAAAABAAIAAAAAAAUAAAABAAUAAAAAAAUAAAABAAgAAAAAAAUAAAABAAsAAAAAAAUAAAABAA4AAAAAAAUAAAABABEAAAAAAAUAAAABABQAAAAAAAUAAAABABcAAAAAAAUAAAABABoAAAAAAAUAAAABAB0AAAAAAAUAAAABACAAAAAAAAUAAAABACMAAAAAAAUAAAABACYAAAAAAAUAAAAoAAIAAAAAAAUAAAArAAIAAAAAAAUAAAAuAAIAAAAAAAUAAAAxAAIAAAAAAAUAAAA0AAIAAAAAAAUAAAA3AAIAAAAAAAUAAAA6AAIAAAAAAAUAAAA9AAIAAAAAAAUAAABAAAIAAAAAAAUAAABDAAIAAAAAAAUAAABGAAIAAAAAAAUAAABGAAUAAAAAAAUAAABDAAUAAAAAAAUAAABAAAUAAAAAAAUAAABAAAgAAAAAAAUAAABDAAgAAAAAAAUAAABGAAgAAAAAAAUAAABGAAsAAAAAAAUAAABDAAsAAAAAAAUAAABAAAsAAAAAAAUAAABAAA4AAAAAAAUAAABDAA4AAAAAAAUAAABGAA4AAAAAAAUAAABGABEAAAAAAAUAAABDABEAAAAAAAUAAABAABEAAAAAAAUAAABAABQAAAAAAAUAAABDABQAAAAAAAUAAABGABQAAAAAAAUAAABGABcAAAAAAAUAAABDABcAAAAAAAUAAABAABcAAAAAAAUAAABAABoAAAAAAAUAAABDABoAAAAAAAUAAABGABoAAAAAAAUAAABGAB0AAAAAAAUAAABDAB0AAAAAAAUAAABAAB0AAAAAAAUAAABAACAAAAAAAAUAAABDACAAAAAAAAUAAABGACAAAAAAAAUAAABGACMAAAAAAAUAAABDACMAAAAAAAUAAABAACMAAAAAAAUAAABAACYAAAAAAAUAAABDACYAAAAAAAUAAABGACYAAAAAAAUAAAA9AAYAAAAAAAUAAAA9AAkAAAAAAAUAAAA9AAwAAAAAAAUAAAA9AA8AAAAAAAUAAAA9ABIAAAAAAAUAAAA9ABUAAAAAAAUAAAA9ABgAAAAAAAUAAAA9ABsAAAAAAAUAAAA9AB4AAAAAAAUAAAA9ACEAAAAAAAUAAAA9ACQAAAAAAAUAAAA9ACcAAAAAAAUAAAAGAAYAAAAAAAUAAAAGAAkAAAAAAAUAAAAGAAwAAAAAAAUAAAAGAA8AAAAAAAUAAAAGABIAAAAAAAUAAAAGABUAAAAAAAUAAAAGABgAAAAAAAUAAAAGABsAAAAAAAUAAAAGAB4AAAAAAAUAAAAGACEAAAAAAAUAAAAGACQAAAAAAAUAAAAGACcAAAAAAAUAAAApABwAAAAKAAcAAAAaABwAAAAKAAcAAAANACAAAAAAAAAAAAAyABQAAAAAAAAAAAAPABQAAAAAAAAAAAA3AAoAAAAAAAAAAAAKAAkAAAAAAAAAAAA3AB8AAAAFAAAAAAAVABIAAAAIAAYAAAAQAAcAAAAIAAYAAAA3AAgAAAAIAAYAAAAyABIAAAAIAAYAAAA1AB0AAAAIAAYAAAAYABIAAAAGAAcAAAAaABIAAAAGAAcAAAAcABIAAAAGAAcAAAAcABQAAAAGAAcAAAAaABQAAAAGAAcAAAAYABQAAAAGAAcAAAA3ABQAAAAKAAcAAAAsABIAAAAIAAYAAAAOABMAAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAZAAIAAAAAAAUAAAAWAAIAAAAAAAUAAAATAAIAAAAAAAUAAAAQAAIAAAAAAAUAAAANAAIAAAAAAAUAAAAKAAIAAAAAAAUAAAAHAAIAAAAAAAUAAAAEAAIAAAAAAAUAAAABAAIAAAAAAAUAAAABAAUAAAAAAAUAAAABAAgAAAAAAAUAAAABAAsAAAAAAAUAAAABAA4AAAAAAAUAAAABABEAAAAAAAUAAAABABQAAAAAAAUAAAABABcAAAAAAAUAAAABABoAAAAAAAUAAAABAB0AAAAAAAUAAAABACAAAAAAAAUAAAABACMAAAAAAAUAAAABACYAAAAAAAUAAAAoAAIAAAAAAAUAAAArAAIAAAAAAAUAAAAuAAIAAAAAAAUAAAAxAAIAAAAAAAUAAAA0AAIAAAAAAAUAAAA3AAIAAAAAAAUAAAA6AAIAAAAAAAUAAAA9AAIAAAAAAAUAAABAAAIAAAAAAAUAAABDAAIAAAAAAAUAAABGAAIAAAAAAAUAAABGAAUAAAAAAAUAAABDAAUAAAAAAAUAAABAAAUAAAAAAAUAAABAAAgAAAAAAAUAAABDAAgAAAAAAAUAAABGAAgAAAAAAAUAAABGAAsAAAAAAAUAAABDAAsAAAAAAAUAAABAAAsAAAAAAAUAAABAAA4AAAAAAAUAAABDAA4AAAAAAAUAAABGAA4AAAAAAAUAAABGABEAAAAAAAUAAABDABEAAAAAAAUAAABAABEAAAAAAAUAAABAABQAAAAAAAUAAABDABQAAAAAAAUAAABGABQAAAAAAAUAAABGABcAAAAAAAUAAABDABcAAAAAAAUAAABAABcAAAAAAAUAAABAABoAAAAAAAUAAABDABoAAAAAAAUAAABGABoAAAAAAAUAAABGAB0AAAAAAAUAAABDAB0AAAAAAAUAAABAAB0AAAAAAAUAAABAACAAAAAAAAUAAABDACAAAAAAAAUAAABGACAAAAAAAAUAAABGACMAAAAAAAUAAABDACMAAAAAAAUAAABAACMAAAAAAAUAAABAACYAAAAAAAUAAABDACYAAAAAAAUAAABGACYAAAAAAAUAAAA9AAYAAAAAAAUAAAA9AAkAAAAAAAUAAAA9AAwAAAAAAAUAAAA9AA8AAAAAAAUAAAA9ABIAAAAAAAUAAAA9ABUAAAAAAAUAAAA9ABgAAAAAAAUAAAA9ABsAAAAAAAUAAAA9AB4AAAAAAAUAAAA9ACEAAAAAAAUAAAA9ACQAAAAAAAUAAAA9ACcAAAAAAAUAAAApABwAAAAKAAcAAAAaABwAAAAKAAcAAAANACAAAAAAAAAAAAAyABQAAAAAAAAAAAAPABQAAAAAAAAAAAA3AAoAAAAAAAAAAAAKAAkAAAAAAAAAAAA3AB8AAAAFAAAAAAAVABIAAAAIAAYAAAAQAAcAAAAIAAYAAAA3AAgAAAAIAAYAAAAyABIAAAAIAAYAAAA1AB0AAAAIAAYAAAAYABIAAAAGAAcAAAAaABIAAAAGAAcAAAAcABIAAAAGAAcAAAAcABQAAAAGAAcAAAAaABQAAAAGAAcAAAAYABQAAAAGAAcAAAA3ABQAAAAKAAcAAAAsABIAAAAIAAYAAAAOABMAAAAAAAEAAAAEACYAAAAAAAUAAAAEACMAAAAAAAUAAAAEACAAAAAAAAUAAAAEAB0AAAAAAAUAAAAEABoAAAAAAAUAAAAEABcAAAAAAAUAAAAEABQAAAAAAAUAAAAEABEAAAAAAAUAAAAEAA4AAAAAAAUAAAAEAAsAAAAAAAUAAAAEAAgAAAAAAAUAAAAEAAUAAAAAAAUAAAAKAAQAAAAAAAUAAAAHAAQAAAAAAAUAAAANAAQAAAAAAAUAAAAQAAQAAAAAAAUAAAATAAQAAAAAAAUAAAAWAAQAAAAAAAUAAAAZAAQAAAAAAAUAAAAcAAIAAAAAAAUAAAAcAAQAAAAAAAUAAAAfAAIAAAAAAAUAAAAfAAQAAAAAAAUAAAAiAAIAAAAAAAUAAAAlAAIAAAAAAAUAAAAlAAQAAAAAAAUAAAAiAAQAAAAAAAUAAAA6AAQAAAAAAAUAAAA3AAQAAAAAAAUAAAA0AAQAAAAAAAUAAAAxAAQAAAAAAAUAAAAuAAQAAAAAAAUAAAArAAQAAAAAAAUAAAAoAAQAAAAAAAUAAAAJAAgAAAAAAAUAAAAeAAcAAAAIAAYAAAAkAAcAAAAIAAYAAAA=")
 tile_set = SubResource("TileSet_olywt")
 
 [node name="Kinight" parent="YSort" instance=ExtResource("7_olywt")]
-position = Vector2(-754, 560)
+position = Vector2(501, 468)
 
 [node name="Chicken" parent="YSort" instance=ExtResource("5_5jt0b")]
-position = Vector2(676, 197)
+position = Vector2(426, 153)
 
 [node name="Cow" parent="YSort" instance=ExtResource("6_auwy8")]
-position = Vector2(756, 175)
+position = Vector2(361, 132)
 
 [node name="Rogue" parent="YSort" instance=ExtResource("8_wsy48")]
-position = Vector2(-756, 216)
+position = Vector2(-757, 243)
+
+[node name="Orc" parent="YSort" instance=ExtResource("9_d7gt0")]
+position = Vector2(1862, 269)
+
+[node name="Shaman" parent="YSort" instance=ExtResource("10_wmggd")]
+position = Vector2(-736, 1010)
+
+[node name="Crew" parent="YSort" instance=ExtResource("11_wmggd")]
+position = Vector2(-747, 570)
+
+[node name="Skull" parent="YSort" instance=ExtResource("12_aqwjf")]
+position = Vector2(1847, 616)
+
+[node name="skeleton" parent="YSort" instance=ExtResource("13_t2dcy")]
+position = Vector2(1816, 1036)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_krcr1")

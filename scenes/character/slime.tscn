@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://cgxqxsxuckxcm"]
 
-[ext_resource type="Script" uid="uid://dmkwxp2t8cbq6" path="res://scripts/world/slime.gd" id="1_nphqd"]
+[ext_resource type="Script" uid="uid://dmkwxp2t8cbq6" path="res://scripts/character/slime.gd" id="1_nphqd"]
 [ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="1_v4uj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4uj4"]

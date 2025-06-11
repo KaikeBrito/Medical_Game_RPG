@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://crj7ir33yvcfj"]
 
-[ext_resource type="Script" uid="uid://cw8wlt8vu6ebp" path="res://door_component_village.gd" id="1_gbn0f"]
+[ext_resource type="Script" uid="uid://cw8wlt8vu6ebp" path="res://scripts/world/door_component_village.gd" id="1_gbn0f"]
 [ext_resource type="Texture2D" uid="uid://bedc7df6o46ay" path="res://Farm RPG FREE 16x16 - Tiny Asset Pack/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/House.png" id="2_d7jxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4dk1"]
@@ -67,14 +67,14 @@ script = ExtResource("1_gbn0f")
 _animation = NodePath("Animation")
 
 [node name="Texture" type="Sprite2D" parent="."]
-position = Vector2(3, 5)
+position = Vector2(1, 0)
 texture = ExtResource("2_d7jxu")
 hframes = 14
 vframes = 4
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 19)
+position = Vector2(1, 15)
 shape = SubResource("RectangleShape2D_i4dk1")
 
 [node name="Animation" type="AnimationPlayer" parent="."]

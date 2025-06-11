@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://dytfsax6uv1rp"]
 
-[ext_resource type="Script" uid="uid://0re2uhxtsjdh" path="res://scripts/world/character.gd" id="1_ushfy"]
+[ext_resource type="Script" uid="uid://0re2uhxtsjdh" path="res://scripts/character/character.gd" id="1_ushfy"]
 [ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="2_ushfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3wjb"]
