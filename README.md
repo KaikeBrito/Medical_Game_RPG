@@ -1,76 +1,89 @@
-# Nome do Projeto: Vitalis: Epidemia em Pixel Art
+# Nome do Projeto: Tiwahan: A Lenda dos Ikrâ
 
 ## Descrição
-"Vitalis: Epidemia em Pixel Art" é um RPG educativo 2D top-down onde você assume o papel de um médico em um vilarejo devastado por uma epidemia. O jogo combina mecânicas de combate por turnos, coleta de recursos, escolhas morais e elementos de estratégia para ensinar conceitos básicos de saúde e ética médica.
+
+"Tiwahan: A Lenda dos Ikrâ" é um RPG 2D top-down inspirado em culturas indígenas, onde você controla Kuaray, um jovem guerreiro da tribo Aruá que deve salvar sua terra após a invasão dos monstros Ikrâ. Através de exploração, combate e coleta de artefatos sagrados, descubra segredos ancestrais e restaure o equilíbrio entre o mundo dos vivos e o reino espiritual.
 
 ## Principais Funcionalidades
-- **Combate por turnos** contra patógenos (vírus, bactérias, fungos)
-- **Coleta de recursos**: plantas medicinais na Floresta Medicinal
-- **Escolhas morais**: alocação de recursos limitados e decisões éticas
-- **Sistema de recompensas**: XP por cura correta e captura de antídotos
-- **Desbloqueio de habilidades**: como vacinação em massa
-- **Simulação da propagação de doenças** usando grafos
-- **Árvore de decisão** para apoiar escolhas morais
+
+* **Exploração Livre**: percorra vilarejos ancestrais, florestas sagradas e montanhas profanas.
+* **Combate Dinâmico**: enfrente seis invasores Ikrâ com estilos únicos de batalha.
+* **Coleta de Símbolos de Proteção**: recupere ossos talhados, plumas sagradas e pedras rituais em cada casa profanada.
+* **Narrativa Ancestral**: descubra pergaminhos que revelam a história dos Aruá e o segredo dos Ikrâ.
+* **Sistema de Progressão**: desbloqueie habilidades espirituais — Lâmina do Raio Carmesim, Escudo de Folhas e Canção Ancestral.
+* **Ambientação Cultural**: trilha sonora e efeitos sonoros baseados em ritmos e sons da natureza.
 
 ## Plataformas
-- **PC** (Compatível com Windows, Mac e Linux)
+
+* **PC** (Windows, macOS, Linux)
 
 ## Tecnologias e Ferramentas
-- **Engine**: Godot 4.x
-- **Arte**: Pixel art retro (inspirada em clássicos como Pokémon)
-- **Áudio**: Música instrumental com tons urgentes (combate) e calmos (exploração)
-- **Controle de versão**: Git e GitHub
-- **Metodologia**: SCRUM
+
+* **Engine**: Godot 4.x
+* **Arte**: Pixel art retrô com influência de artes indígenas
+* **Áudio**: Atmosferas e tambores inspirados em cantos tribais
+* **Versionamento**: Git e GitHub
+* **Metodologia**: SCRUM ágil
 
 ## Instalação
-1. Clone este repositório:
+
+1. Clone o repositório:
+
    ```bash
-   git clone https://github.com/SEU_USUARIO/vitalis-epidemia.git
-   cd vitalis-epidemia
+   git clone https://github.com/SEU_USUARIO/tiwahan-ikra.git
+   cd tiwahan-ikra
    ```
-2. Abra o projeto no Godot:
-   - Instale [Godot 4.x](https://godotengine.org/download)
-   - No Godot, selecione **Import** e aponte para `project.godot`
-3. Execute o jogo clicando em **Play** ou pressionando `F5`.
+2. Abra no Godot:
+
+   * Instale [Godot 4.x](https://godotengine.org/download)
+   * No Godot, selecione **Import** e aponte para `project.godot`
+3. Execute com **Play** ou pressione `F5`.
 
 ## Como Jogar
-- **Movimento**: Use as teclas `W`, `A`, `S`, `D` para mover o personagem.
-- **Interação**: Clique com o mouse sobre NPCs, itens e objetos para interagir.
-- **Inventário**: Abra com `I` para ver plantas medicinais e antídotos.
-- **Combate**: Selecione antídotos e habilidades através da barra de diagnóstico rápido.
-- **Mapa**: Pressione `M` para visualizar o mapa interativo do vilarejo.
+
+* **Movimento**: use `W`, `A`, `S`, `D`.
+* **Interação**: pressione `E` em NPCs, itens e portões antigos.
+* **Inventário**: abra com `I` para ver símbolos e artefatos coletados.
+* **Combate**: selecione ataques e habilidades no menu radial que aparece ao pressionar `Q`.
+* **Mapas**: `M` exibe o mapa com casas invadidas marcadas.
 
 ## Estrutura do Projeto
+
 ```
-/vitalis-epidemia
-├── assets/             # Sprites, ícones e áudio
-├── scenes/             # Cenas Godot (vila, floresta, laboratório)
-├── scripts/            # Lógicas de jogo (combate, UI, IA)
-├── project.godot       # Arquivo de configuração do Godot
-├── README.md           # Este documento
-└── LICENSE             # Licença do projeto
+/tiwahan-ikra
+├── assets/            # Sprites, ícones e sons (tamruros, ventos)
+├── scenes/            # Cenas Godot (aldeia, floresta, templo)
+├── scripts/           # Lógicas de batalha, diálogo, inventário
+├── lore/              # Arquivos de texto dos pergaminhos ancestrais
+├── project.godot      # Configuração do Godot
+├── README.md          # Este documento
+└── LICENSE            # Licença MIT
 ```
 
 ## Cronograma de Desenvolvimento
-| Fase               | Objetivos Principais                                  | Prazo        |
-|--------------------|-------------------------------------------------------|--------------|
-| **Primeira Entrega** | Criação do personagem, mapa da vila, inimigos         | Semana 1     |
-| **Segunda Entrega**  | Implementar modo de batalha e coleta de itens         | Semana 3     |
-| **Terceira Entrega** | Desenvolvimento da narrativa e laboratório abandonado  | Semana 5     |
+
+| Fase                  | Objetivos Principais                                | Prazo    |
+| --------------------- | --------------------------------------------------- | -------- |
+| **Alpha**             | Cenário da aldeia e movimentação básica             | Semana 1 |
+| **Beta**              | Combate contra invasores e coleta de símbolos       | Semana 3 |
+| **Release Candidate** | Implementação de narrativa e sistema de habilidades | Semana 5 |
 
 ## Contribuição
-Sua contribuição é bem-vinda! Para colaborar:
-1. Faça um fork deste repositório.
-2. Crie uma branch: `git checkout -b feature/nova-mecânica`
-3. Faça suas alterações e commit: `git commit -m "Adiciona nova mecânica"`
-4. Envie para o repositório remoto: `git push origin feature/nova-mecânica`
-5. Abra um pull request.
+
+Contribuições são bem-vindas:
+
+1. Faça um fork do repositório.
+2. Crie uma branch: `git checkout -b feature/nome-da-mecânica`
+3. Faça commits claros: `git commit -m "Adiciona descrição da floresta"`
+4. Envie para seu fork e abra um Pull Request.
 
 ## Equipe
-- Kaike Brito Leitão (2214661)
-- Enrico Santos Navajas (2219125)
-- Luca Fiuza (2219124)
-- Vinicius Dias
+
+* Kaike Brito Leitão (2214661)
+* Enrico Santos Navajas (2219125)
+* Luca Fiuza (2219124)
+* Vinicius Dias
 
 ## Licença
+
 Este projeto está licenciado sob a [MIT License](LICENSE).
