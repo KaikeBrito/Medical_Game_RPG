@@ -1,11 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://h4utufpnv5u0"]
+[gd_scene load_steps=50 format=3 uid="uid://bl55ewt8f6kqt"]
 
-[ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_3ki0w"]
-[ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="1_g0lu4"]
-[ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="2_3ki0w"]
-[ext_resource type="Texture2D" uid="uid://bfh3kh6wutihy" path="res://sprites/Background/battleback1.png" id="2_fid7t"]
-[ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="2_gvb6n"]
-[ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="4_fid7t"]
+[ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_5a1ia"]
+[ext_resource type="Texture2D" uid="uid://bfh3kh6wutihy" path="res://sprites/Background/battleback1.png" id="2_vtiow"]
+[ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="3_hqjfr"]
+[ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="4_yv5wj"]
+[ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="5_ypwvk"]
+[ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="6_qdkxm"]
+[ext_resource type="Texture2D" uid="uid://bbfpgupxvlfc" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Mobs/Skeleton Crew/Skeleton - Warrior/Death/Death-Sheet.png" id="7_yv5wj"]
+[ext_resource type="Texture2D" uid="uid://clvh8pycm1212" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Mobs/Skeleton Crew/Skeleton - Warrior/Idle/Idle-Sheet.png" id="8_ypwvk"]
+[ext_resource type="Texture2D" uid="uid://wrkjo8gjb4ol" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Mobs/Skeleton Crew/Skeleton - Warrior/Run/Run-Sheet.png" id="9_qdkxm"]
 
 [sub_resource type="Animation" id="Animation_vjuxw"]
 length = 0.001
@@ -106,6 +109,136 @@ states/idle_right/position = Vector2(330.667, 100.667)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ki0w"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e54cy"]
+atlas = ExtResource("7_yv5wj")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_412t2"]
+atlas = ExtResource("7_yv5wj")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14feb"]
+atlas = ExtResource("7_yv5wj")
+region = Rect2(128, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0udbn"]
+atlas = ExtResource("7_yv5wj")
+region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3brc"]
+atlas = ExtResource("7_yv5wj")
+region = Rect2(256, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_135ug"]
+atlas = ExtResource("7_yv5wj")
+region = Rect2(320, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qnrq"]
+atlas = ExtResource("8_ypwvk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gegj5"]
+atlas = ExtResource("8_ypwvk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei15j"]
+atlas = ExtResource("8_ypwvk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag8v0"]
+atlas = ExtResource("8_ypwvk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nauii"]
+atlas = ExtResource("9_qdkxm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps2g8"]
+atlas = ExtResource("9_qdkxm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uteo7"]
+atlas = ExtResource("9_qdkxm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ginyy"]
+atlas = ExtResource("9_qdkxm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unpwd"]
+atlas = ExtResource("9_qdkxm")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx6ke"]
+atlas = ExtResource("9_qdkxm")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oyb1r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e54cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_412t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14feb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0udbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3brc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_135ug")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qnrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gegj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei15j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag8v0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nauii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps2g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uteo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ginyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unpwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx6ke")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_rsd5w"]
 length = 0.001
 
@@ -167,7 +300,7 @@ bg_color = Color(0.180392, 0.8, 0.443137, 1)
 [node name="BattleScene" type="Node2D"]
 
 [node name="BattleManager" type="Node" parent="."]
-script = ExtResource("1_3ki0w")
+script = ExtResource("1_5a1ia")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
@@ -177,7 +310,7 @@ offset_left = -1.0
 offset_top = -4.0
 offset_right = 1160.0
 offset_bottom = 650.0
-texture = ExtResource("2_fid7t")
+texture = ExtResource("2_vtiow")
 metadata/_edit_use_anchors_ = true
 
 [node name="Characters" type="Node2D" parent="CanvasLayer"]
@@ -187,13 +320,13 @@ position = Vector2(610, 314)
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Player"]]
 position = Vector2(-171, -8)
-script = ExtResource("2_3ki0w")
+script = ExtResource("3_hqjfr")
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayer/Characters/Player"]
 texture_filter = 1
 position = Vector2(3, -15)
 scale = Vector2(2, 2)
-texture = ExtResource("1_g0lu4")
+texture = ExtResource("4_yv5wj")
 hframes = 6
 vframes = 10
 frame = 6
@@ -228,16 +361,22 @@ shape = SubResource("CapsuleShape2D_3ki0w")
 
 [node name="Enemy" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Enemy"]]
 position = Vector2(80, 0)
-script = ExtResource("4_fid7t")
+script = ExtResource("5_ypwvk")
 
 [node name="Texture" type="Sprite2D" parent="CanvasLayer/Characters/Enemy"]
 texture_filter = 1
-position = Vector2(82, -6)
-scale = Vector2(2, 2)
-texture = ExtResource("2_gvb6n")
+position = Vector2(83.5, -3)
+scale = Vector2(2.09375, 1.8125)
+texture = ExtResource("6_qdkxm")
 flip_h = true
 hframes = 7
 vframes = 13
+
+[node name="Animated" type="AnimatedSprite2D" parent="CanvasLayer/Characters/Enemy/Texture"]
+position = Vector2(-1.60001, -9.20802)
+scale = Vector2(-0.89376, 1.00714)
+sprite_frames = SubResource("SpriteFrames_oyb1r")
+animation = &"death"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Characters/Enemy"]
 libraries = {

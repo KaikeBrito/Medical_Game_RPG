@@ -1,4 +1,4 @@
-# res://scripts/battles/enemy.gd
+# res://scripts/battles/slime_battle.gd
 extends CharacterBody2D
 
 @onready var anim_tree      = $AnimationTreeEnemy
@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 var max_health := 80
 var health := max_health
-var attack_damage := 15  # Adicionado para compatibilidade com npc_enemy.gd
+var attack_damage := 15
 
 func _ready():
 	anim_tree.active = true
@@ -17,7 +17,7 @@ func _ready():
 func attack(target, target_defending := false):
 	state_machine.travel("attack")
 	await get_tree().create_timer(0.5).timeout
-	var dmg = attack_damage  # Usa a variável attack_damage
+	var dmg = attack_damage
 	if target_defending:
 		dmg = int(floor(dmg / 2.0))
 	target.take_damage(dmg)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dq3dojceenpwd"]
+[gd_scene load_steps=27 format=4 uid="uid://dq3dojceenpwd"]
 
 [ext_resource type="PackedScene" uid="uid://k2vd0e4qndhk" path="res://scenes/terrains/village.tscn" id="1_e2hwa"]
 [ext_resource type="PackedScene" uid="uid://crj7ir33yvcfj" path="res://scenes/components/door_component_village.tscn" id="2_krcr1"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cwrkhg5wtcd3u" path="res://mystic_woods_free_2.2/sprites/objects/objects.png" id="4_5jt0b"]
 [ext_resource type="PackedScene" uid="uid://djsnrfqvprhun" path="res://scenes/inventory/inventory.tscn" id="4_l7ocm"]
 [ext_resource type="PackedScene" uid="uid://dxuxqgdqehcm2" path="res://scenes/character/chicken.tscn" id="5_5jt0b"]
-[ext_resource type="PackedScene" uid="uid://buhb8bnsw2f0f" path="res://scenes/character/cow.tscn" id="6_auwy8"]
 [ext_resource type="PackedScene" uid="uid://b4ud1edgn2hed" path="res://scenes/character/kinight.tscn" id="7_olywt"]
 [ext_resource type="PackedScene" uid="uid://djkpfclihid8v" path="res://scenes/character/rogue.tscn" id="8_wsy48"]
 [ext_resource type="PackedScene" uid="uid://cshapt0oj7reg" path="res://scenes/character/orc.tscn" id="9_d7gt0"]
@@ -48,6 +47,55 @@ texture = ExtResource("4_5jt0b")
 [sub_resource type="TileSet" id="TileSet_olywt"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_auwy8")
+
+[sub_resource type="Animation" id="Animation_rsd5w"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_yccpy"]
+resource_name = "attack"
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_fid7t"]
+resource_name = "die"
+length = 0.6
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_3ki0w"]
+resource_name = "idle_left"
+length = 0.6
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yccpy"]
+_data = {
+&"RESET": SubResource("Animation_rsd5w"),
+&"attack": SubResource("Animation_yccpy"),
+&"die": SubResource("Animation_fid7t"),
+&"idle_left": SubResource("Animation_3ki0w")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlp61"]
+size = Vector2(42, 40)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ji6nl"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yccpy"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mkkp0"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_avx8f"]
+states/attack/node = SubResource("AnimationNodeAnimation_ji6nl")
+states/attack/position = Vector2(384.724, 83.3333)
+states/die/node = SubResource("AnimationNodeAnimation_yccpy")
+states/die/position = Vector2(596.725, 101.555)
+states/idle_left/node = SubResource("AnimationNodeAnimation_mkkp0")
+states/idle_left/position = Vector2(307.391, 88.6667)
+graph_offset = Vector2(-212.609, 0)
 
 [sub_resource type="GDScript" id="GDScript_krcr1"]
 script/source = "extends CanvasLayer
@@ -143,26 +191,143 @@ position = Vector2(501, 468)
 [node name="Chicken" parent="YSort" instance=ExtResource("5_5jt0b")]
 position = Vector2(426, 153)
 
-[node name="Cow" parent="YSort" instance=ExtResource("6_auwy8")]
-position = Vector2(361, 132)
-
 [node name="Rogue" parent="YSort" instance=ExtResource("8_wsy48")]
 position = Vector2(-757, 243)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Rogue"]
+libraries = {
+&"": SubResource("AnimationLibrary_yccpy")
+}
+
+[node name="ProgressBarEnemy" type="ProgressBar" parent="YSort/Rogue"]
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 127.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="YSort/Rogue"]
+position = Vector2(80, -3)
+shape = SubResource("RectangleShape2D_vlp61")
+
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="YSort/Rogue"]
+tree_root = SubResource("AnimationNodeStateMachine_avx8f")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="Orc" parent="YSort" instance=ExtResource("9_d7gt0")]
 position = Vector2(1862, 269)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Orc"]
+libraries = {
+&"": SubResource("AnimationLibrary_yccpy")
+}
+
+[node name="ProgressBarEnemy" type="ProgressBar" parent="YSort/Orc"]
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 127.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="YSort/Orc"]
+position = Vector2(80, -3)
+shape = SubResource("RectangleShape2D_vlp61")
+
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="YSort/Orc"]
+tree_root = SubResource("AnimationNodeStateMachine_avx8f")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="Shaman" parent="YSort" instance=ExtResource("10_wmggd")]
 position = Vector2(-736, 1010)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Shaman"]
+libraries = {
+&"": SubResource("AnimationLibrary_yccpy")
+}
+
+[node name="ProgressBarEnemy" type="ProgressBar" parent="YSort/Shaman"]
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 127.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="YSort/Shaman"]
+position = Vector2(80, -3)
+shape = SubResource("RectangleShape2D_vlp61")
+
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="YSort/Shaman"]
+tree_root = SubResource("AnimationNodeStateMachine_avx8f")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="Crew" parent="YSort" instance=ExtResource("11_wmggd")]
 position = Vector2(-747, 570)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Crew"]
+libraries = {
+&"": SubResource("AnimationLibrary_yccpy")
+}
+
+[node name="ProgressBarEnemy" type="ProgressBar" parent="YSort/Crew"]
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 127.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="YSort/Crew"]
+position = Vector2(80, -3)
+shape = SubResource("RectangleShape2D_vlp61")
+
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="YSort/Crew"]
+tree_root = SubResource("AnimationNodeStateMachine_avx8f")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="Skull" parent="YSort" instance=ExtResource("12_aqwjf")]
 position = Vector2(1847, 616)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Skull"]
+libraries = {
+&"": SubResource("AnimationLibrary_yccpy")
+}
+
+[node name="ProgressBarEnemy" type="ProgressBar" parent="YSort/Skull"]
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 127.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="YSort/Skull"]
+position = Vector2(80, -3)
+shape = SubResource("RectangleShape2D_vlp61")
+
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="YSort/Skull"]
+tree_root = SubResource("AnimationNodeStateMachine_avx8f")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="skeleton" parent="YSort" instance=ExtResource("13_t2dcy")]
 position = Vector2(1816, 1036)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/skeleton"]
+libraries = {
+&"": SubResource("AnimationLibrary_yccpy")
+}
+
+[node name="ProgressBarEnemy" type="ProgressBar" parent="YSort/skeleton"]
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 127.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShapeEnemy" type="CollisionShape2D" parent="YSort/skeleton"]
+position = Vector2(80, -3)
+shape = SubResource("RectangleShape2D_vlp61")
+
+[node name="AnimationTreeEnemy" type="AnimationTree" parent="YSort/skeleton"]
+tree_root = SubResource("AnimationNodeStateMachine_avx8f")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_krcr1")

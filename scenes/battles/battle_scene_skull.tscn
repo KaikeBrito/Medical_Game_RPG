@@ -1,11 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://h4utufpnv5u0"]
+[gd_scene load_steps=52 format=3 uid="uid://deogl32lex30l"]
 
-[ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_3ki0w"]
-[ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="1_g0lu4"]
-[ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="2_3ki0w"]
-[ext_resource type="Texture2D" uid="uid://bfh3kh6wutihy" path="res://sprites/Background/battleback1.png" id="2_fid7t"]
-[ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="2_gvb6n"]
-[ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="4_fid7t"]
+[ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_smlxy"]
+[ext_resource type="Texture2D" uid="uid://bfh3kh6wutihy" path="res://sprites/Background/battleback1.png" id="2_lmfwp"]
+[ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="3_p7jlt"]
+[ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="4_jfoi6"]
+[ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="5_yu2ct"]
+[ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="6_odx3g"]
+[ext_resource type="Texture2D" uid="uid://cw50xe8bisg1h" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Mobs/Skeleton Crew/Skeleton - Base/Death/Death-Sheet.png" id="7_jfoi6"]
+[ext_resource type="Texture2D" uid="uid://v87106c8n57c" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Mobs/Skeleton Crew/Skeleton - Base/Idle/Idle-Sheet.png" id="8_yu2ct"]
+[ext_resource type="Texture2D" uid="uid://irsc06pbrjb0" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Mobs/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png" id="9_odx3g"]
 
 [sub_resource type="Animation" id="Animation_vjuxw"]
 length = 0.001
@@ -106,6 +109,150 @@ states/idle_right/position = Vector2(330.667, 100.667)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ki0w"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_opoe1"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sad4e"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evaxt"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btsvx"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf1ys"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kouts"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o26p2"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc8kl"]
+atlas = ExtResource("7_jfoi6")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scdai"]
+atlas = ExtResource("8_yu2ct")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bcif"]
+atlas = ExtResource("8_yu2ct")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvess"]
+atlas = ExtResource("8_yu2ct")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7difn"]
+atlas = ExtResource("8_yu2ct")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilfa4"]
+atlas = ExtResource("9_odx3g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov253"]
+atlas = ExtResource("9_odx3g")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do0x0"]
+atlas = ExtResource("9_odx3g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxfij"]
+atlas = ExtResource("9_odx3g")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xnab"]
+atlas = ExtResource("9_odx3g")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvuwf"]
+atlas = ExtResource("9_odx3g")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00ly3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opoe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sad4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evaxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btsvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf1ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kouts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o26p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc8kl")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scdai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bcif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvess")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7difn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilfa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov253")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do0x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxfij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xnab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvuwf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_rsd5w"]
 length = 0.001
 
@@ -167,7 +314,7 @@ bg_color = Color(0.180392, 0.8, 0.443137, 1)
 [node name="BattleScene" type="Node2D"]
 
 [node name="BattleManager" type="Node" parent="."]
-script = ExtResource("1_3ki0w")
+script = ExtResource("1_smlxy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
@@ -177,7 +324,7 @@ offset_left = -1.0
 offset_top = -4.0
 offset_right = 1160.0
 offset_bottom = 650.0
-texture = ExtResource("2_fid7t")
+texture = ExtResource("2_lmfwp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Characters" type="Node2D" parent="CanvasLayer"]
@@ -187,13 +334,13 @@ position = Vector2(610, 314)
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Player"]]
 position = Vector2(-171, -8)
-script = ExtResource("2_3ki0w")
+script = ExtResource("3_p7jlt")
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayer/Characters/Player"]
 texture_filter = 1
 position = Vector2(3, -15)
 scale = Vector2(2, 2)
-texture = ExtResource("1_g0lu4")
+texture = ExtResource("4_jfoi6")
 hframes = 6
 vframes = 10
 frame = 6
@@ -228,16 +375,23 @@ shape = SubResource("CapsuleShape2D_3ki0w")
 
 [node name="Enemy" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Enemy"]]
 position = Vector2(80, 0)
-script = ExtResource("4_fid7t")
+script = ExtResource("5_yu2ct")
 
 [node name="Texture" type="Sprite2D" parent="CanvasLayer/Characters/Enemy"]
 texture_filter = 1
 position = Vector2(82, -6)
 scale = Vector2(2, 2)
-texture = ExtResource("2_gvb6n")
+texture = ExtResource("6_odx3g")
 flip_h = true
 hframes = 7
 vframes = 13
+
+[node name="Animated" type="AnimatedSprite2D" parent="CanvasLayer/Characters/Enemy/Texture"]
+position = Vector2(-2.25659, -2)
+scale = Vector2(-1.12973, 1.081)
+sprite_frames = SubResource("SpriteFrames_00ly3")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Characters/Enemy"]
 libraries = {

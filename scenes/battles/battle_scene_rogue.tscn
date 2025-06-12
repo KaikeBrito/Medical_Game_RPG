@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://h4utufpnv5u0"]
+[gd_scene load_steps=35 format=3 uid="uid://cnvijmk1vh5ji"]
 
-[ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_3ki0w"]
-[ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="1_g0lu4"]
-[ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="2_3ki0w"]
-[ext_resource type="Texture2D" uid="uid://bfh3kh6wutihy" path="res://sprites/Background/battleback1.png" id="2_fid7t"]
-[ext_resource type="Texture2D" uid="uid://6sutb2mx3x1d" path="res://mystic_woods_free_2.2/sprites/characters/slime.png" id="2_gvb6n"]
-[ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="4_fid7t"]
+[ext_resource type="Script" uid="uid://c67oc58hf6omo" path="res://scripts/battles/battle_manager.gd" id="1_ielt8"]
+[ext_resource type="Texture2D" uid="uid://bfh3kh6wutihy" path="res://sprites/Background/battleback1.png" id="2_08bgk"]
+[ext_resource type="Script" uid="uid://c7n6sry854rk" path="res://scripts/battles/player.gd" id="3_rbx7w"]
+[ext_resource type="Texture2D" uid="uid://cbpy5k5gyiy3l" path="res://mystic_woods_free_2.2/sprites/characters/player.png" id="4_oox6j"]
+[ext_resource type="Script" uid="uid://dhhha0tyujhjk" path="res://scripts/battles/enemy.gd" id="5_i1tr4"]
+[ext_resource type="Texture2D" uid="uid://cv6xj0pipw0av" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Entities/Npc's/Rogue/Idle/Idle-Sheet.png" id="6_ielt8"]
 
 [sub_resource type="Animation" id="Animation_vjuxw"]
 length = 0.001
@@ -106,6 +106,42 @@ states/idle_right/position = Vector2(330.667, 100.667)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ki0w"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjqxa"]
+atlas = ExtResource("6_ielt8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sua2"]
+atlas = ExtResource("6_ielt8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wwus"]
+atlas = ExtResource("6_ielt8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6sbj"]
+atlas = ExtResource("6_ielt8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08bgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjqxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sua2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wwus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6sbj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
 [sub_resource type="Animation" id="Animation_rsd5w"]
 length = 0.001
 
@@ -167,7 +203,7 @@ bg_color = Color(0.180392, 0.8, 0.443137, 1)
 [node name="BattleScene" type="Node2D"]
 
 [node name="BattleManager" type="Node" parent="."]
-script = ExtResource("1_3ki0w")
+script = ExtResource("1_ielt8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
@@ -177,7 +213,7 @@ offset_left = -1.0
 offset_top = -4.0
 offset_right = 1160.0
 offset_bottom = 650.0
-texture = ExtResource("2_fid7t")
+texture = ExtResource("2_08bgk")
 metadata/_edit_use_anchors_ = true
 
 [node name="Characters" type="Node2D" parent="CanvasLayer"]
@@ -187,13 +223,13 @@ position = Vector2(610, 314)
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Player"]]
 position = Vector2(-171, -8)
-script = ExtResource("2_3ki0w")
+script = ExtResource("3_rbx7w")
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayer/Characters/Player"]
 texture_filter = 1
 position = Vector2(3, -15)
 scale = Vector2(2, 2)
-texture = ExtResource("1_g0lu4")
+texture = ExtResource("4_oox6j")
 hframes = 6
 vframes = 10
 frame = 6
@@ -228,16 +264,21 @@ shape = SubResource("CapsuleShape2D_3ki0w")
 
 [node name="Enemy" type="CharacterBody2D" parent="CanvasLayer/Characters" groups=["Enemy"]]
 position = Vector2(80, 0)
-script = ExtResource("4_fid7t")
+script = ExtResource("5_i1tr4")
 
 [node name="Texture" type="Sprite2D" parent="CanvasLayer/Characters/Enemy"]
 texture_filter = 1
 position = Vector2(82, -6)
 scale = Vector2(2, 2)
-texture = ExtResource("2_gvb6n")
 flip_h = true
 hframes = 7
 vframes = 13
+
+[node name="Animated" type="AnimatedSprite2D" parent="CanvasLayer/Characters/Enemy/Texture"]
+position = Vector2(-1.52588e-05, -5.5)
+scale = Vector2(-1.03744, 1.06075)
+sprite_frames = SubResource("SpriteFrames_08bgk")
+animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Characters/Enemy"]
 libraries = {

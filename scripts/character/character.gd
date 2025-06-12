@@ -47,10 +47,16 @@ func _move() -> void:
 # Na função _attack():
 func _attack() -> void:
 	if Input.is_action_just_pressed("attack") and not _is_attacking:
-		attack_area.set_deferred("monitoring", true)  # Alterado para set_deferred
+		attack_area.set_deferred("monitoring", true)
 		attack_timer.wait_time = attack_duration
 		attack_timer.start()
 		_is_attacking = true
+	elif Input.is_action_just_pressed("battle") and not _is_attacking:
+		# Verifica se há inimigos na área
+		for body in attack_area.get_overlapping_bodies():
+			if body.is_in_group("Enemy"):
+				call_deferred("_start_battle", body)
+				break
 
 # Na função _on_attack_timer_timeout():
 func _on_attack_timer_timeout() -> void:
