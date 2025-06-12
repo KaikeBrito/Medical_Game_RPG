@@ -61,6 +61,7 @@ func _ready():
 	victory_label.visible = false
 	defeat_label.visible = false
 	_update_ui()
+	_update_xp_bar()
 
 func _on_attack():
 	if not player_turn or player.is_dead():
@@ -111,15 +112,17 @@ func _update_ui():
 	skip_button.disabled = not player_turn
 
 func _update_xp_bar():
-	var current = float(player.xp_system.current_xp)
-	var total = float(player.xp_system.xp_to_next_level)
-	var level = player.xp_system.level
+	# CORRIGIDO: Usa o nome do Autoload (o objeto)
+	var current = float(XPManager.current_xp)
+	var total = float(XPManager.xp_to_next_level)
+	var level = XPManager.level
+	
 	xp_bar.max_value = total
 	xp_bar.value = lerp(xp_bar.value, current, 0.25)
 	xp_label.text = "Nível %d - %d / %d XP" % [level, current, total]
 
 func _on_victory():
-	player.xp_system.gain_xp(50)
+	XPManager.gain_xp(50)
 	_update_xp_bar()
 	victory_label.visible = true
 	attack_button.disabled = true
